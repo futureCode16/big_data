@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Visit</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"
+        integrity="sha256-H9jAz//QLkDOy/nzE9G4aYijQtkLt9FvGmdUTwBk6gs=" crossorigin="anonymous"></script>
+
+</head>
+<link rel="stylesheet" type="text/css" href="./style.css">
+
+<body>
+    <div id="header" class="col-md-12 shadow-sm">
+        <div id="event" class="col-md-12">
+            <div id="navs" class="row">
+                <div class="col-md-6">
+                    <i id="logo" class="text-black fas fa-users"></i>
+                    <span><b id="logoText" class="text-black">Visit</b></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <center>
+        <div class="card">
+            <div class="card-header">
+                <i id="check" class="fas fa-user-check text-white"></i>
+            </div>
+            <div class="card-body">
+                <div class="search col-md-12">
+                    <input id="name" type="text" class="searchbtn form-control"
+                        placeholder="Search for...Lastname, Firstname" value="">
+                    <br>
+                    <button id="go" class="btn btn-default" type="button">GO</button>
+                    <br>
+                    <br>
+                    <i>updates</i><span><i class="fas fa-angle-down btn btn-link btn-link" data-toggle="collapse"
+                            href="#multiCollapseExample1" role="button" aria-expanded="false"
+                            aria-controls="multiCollapseExample1"></i></span>
+                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <p class="text-left text-black"><b>Date: </b><span>11/6/2019</span> </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="text-right text-black"><b>No. Of Visitors: </b><span
+                                        id="visitorsCount">0</span> </p>
+                            </div>
+                            <button id="retrieveAll" type="button"
+                                class="btn btn-outline-success btn-lg btn-block">Retrieve All</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="headerlogo.png" class="rounded-circle" alt="Cinque Terre" width="100"
+                                    height="100">
+                            </div>
+                            <div id="school" class="col-md-9">
+                                <center>
+                                    <p>The Sisters of Mary School-Boystown,Inc.<br>
+                                        Tungkop, Minglanilla, Cebu
+                                    </p>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <br>
+                    <br>
+                    <br>
+                    <h3>&nbsp;&nbsp;Personal Information :</h3>
+                    <br>
+                    <!-- start of student Info -->
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <br>
+                                <img id="profile" src="profile2.jpg" class="rounded img-responsive" alt="Cinque Terre">
+                            </div>
+                            <div class="col-md-8">
+                                <br>
+                                <div class="padding col-md-12">
+                                    <h6 class="studentInformationPadding">Name:</h6>
+                                </div>
+                                <div class="Sname col-md-12">
+                                    <h6 class="Nsize">Renan C. Bargaso</h6>
+                                    <hr>
+                                </div>
+                                <div class="padding col-md-12">
+                                    <h6 class="studentInformationPadding">Address:</h6>
+                                </div>
+                                <div class="Sname col-md-12">
+                                    <h6 class="Nsize">Zone-2 Bacuyangan, Hinoba-an Negros
+                                        Occidental</h6>
+                                    <hr>
+                                </div>
+                                <div class="padding col-md-12">
+                                    <h6 class="studentInformationPadding">Age:</h6>
+                                </div>
+                                <div class="Sname col-md-12">
+                                    <h6 class="Nsize">20</h6>
+                                    <hr>
+                                </div>
+                                <div class="padding col-md-12">
+                                    <h6 class="studentInformationPadding">Batch:</h6>
+                                </div>
+                                <div class="Sname col-md-12">
+                                    <h6 class="Nsize">24</h6>
+                                    <hr>
+                                </div>
+                                <div class="padding col-md-12">
+                                    <h6 class="studentInformationPadding">Gender:</h6>
+                                </div>
+                                <div class="Sname col-md-12">
+                                    <h6 class="Nsize">Male</h6>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of Student Info -->
+                    <br>
+                    <br>
+                    <hr class="breaker">
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-md-12">
+                        <div class="Visitors row">
+                            <div class="visitorsInfo col-md-6">
+                                <div class="col-md-12">
+                                    <p id="VisitorsInfoHeader">Visitor's Information</p>
+                                </div>
+                                <hr>
+                                <div class=col-md-12>
+                                    <p>Firstname:</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="Vfname" class="vInfo" type="text" placeholder="First Name">
+                                </div>
+                                <div class=col-md-12>
+                                    <p>Lastname:</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="Vlname" class="vInfo" type="text" placeholder="Last Name">
+                                </div>
+                                <div class=col-md-12>
+                                    <p>Age:</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="Vage" class="vInfo" type="Number" placeholder="Age">
+                                </div>
+                                <div class="col-md-12">
+                                    <p for="sex">Gender:</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <select class="vInfo" id="Vsex">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                <div class=col-md-12>
+                                    <p>Address:</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="Vaddress" class="vInfo" type="text" placeholder="Address">
+                                </div>
+                                <br>
+                                <center>
+                                    <button id="vSubmit" type="button" class="btn btn-outline-primary">submit</button>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="vClose" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="table" class="container-fluid">
+        <div id="card" class="card overflow-auto" style="width:100%;height:500px;">
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div class="row">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Student Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Update</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="modal fade center hide" id="updateModal" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>UPDATE INFORMATION</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="tab-content">
+                        <div id="home" class="container tab-pane active">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input id="updateFirstName" type="text" class="form-control" placeholder="First Name"
+                                    aria-label="First Name" aria-describedby="basic-addon1" value="">
+                                <span>
+                                    <input id="updateLastName" type="text" class="form-control" placeholder="Last Name"
+                                        aria-label="Last Name" aria-describedby="basic-addon1" value="">
+                                </span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="sex"><i class="fa fa-intersex"></i></label>
+                                </div>
+                                <select class="custom-select" id="updateSex">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                <span>
+                                    <input id="updateAge" type="number" class="form-control" placeholder="age"
+                                        aria-label="age" aria-describedby="basic-addon1">
+                                </span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-home"></i></span>
+                                </div>
+                                <input id="updateAddress" type="text" class="form-control" placeholder="Address"
+                                    aria-label="Address" aria-describedby="basic-addon1" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="updateSave" type="button" class="btn btn-outline-success">save</button>
+                    <button id="updateClose" type="button" class="btn btn-outline-danger"
+                        data-dismiss="modal">close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade center" id="addModal" class="modal hide" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <b>
+                        <p id="modalName" class="modal-title">Name</p>
+                    </b>
+                </div>
+                <div class="modal-body">
+                    <div class="tab-content">
+                        <div id="home" class="container tab-pane active">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input id="firstName" type="text" class="form-control" placeholder="First Name"
+                                    aria-label="First Name" aria-describedby="basic-addon1" value="">
+                                <span>
+                                    <input id="lastName" type="text" class="form-control" placeholder="Last Name"
+                                        aria-label="Last Name" aria-describedby="basic-addon1" value="">
+                                </span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="sex"><i class="fa fa-intersex"></i></label>
+                                </div>
+                                <select class="custom-select" id="sex">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                <span>
+                                    <input id="age" type="number" class="form-control" placeholder="age"
+                                        aria-label="age" aria-describedby="basic-addon1">
+                                </span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-home"></i></span>
+                                </div>
+                                <input id="Address" type="text" class="form-control" placeholder="Address"
+                                    aria-label="Address" aria-describedby="basic-addon1" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="save" type="button" class="btn btn-outline-success">save</button>
+                        <button id="close" type="button" class="btn btn-outline-danger"
+                            data-dismiss="modal">close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+</body>
+
+</html>

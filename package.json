@@ -1,0 +1,28 @@
+{
+  "name": "ais",
+  "version": "1.0.0",
+  "description": "visiting log",
+  "main": "router.js",
+  "scripts": {
+    "test": "node router.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/futureCode16/AIS.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Renan Bargaso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/futureCode16/AIS/issues"
+  },
+  "homepage": "https://github.com/futureCode16/AIS#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.7.9"
+  }
+}

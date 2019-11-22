@@ -1,0 +1,209 @@
+body{
+    height:100%;
+    margin:0;
+}
+#header{
+    height: 400px;
+    background: white;
+    background-image: url('famday.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index:1;
+    padding:0;
+}
+#inputField{
+    width:400px;
+}
+#name{
+    width:400px;
+}
+.search{
+    margin-top:20%;
+}
+.searchbtn{
+    height: 50px;
+}
+#go{
+    height:30px; 
+}
+.page-header{
+    background:black;
+    height:200px;
+}
+.card{
+    margin-top:-100px;
+    z-index:2;
+    width:500px;
+}
+.card-header{
+    height:150px;
+    background:#82015b;
+}
+.btn-default, #close, #save, #updateClose, #updateSave{
+    border:2px solid #fa05ef;
+    border-radius:15px;
+    width:150px;
+    padding:0;
+    font-weight: bold;
+}
+#close, #updateClose, #updateSave{
+    border:1px solid red;
+    width:100px;
+}
+#save,#updateSave{
+    border:1px solid green;
+    width:100px;
+}
+#event{
+    background:#82015b;
+}
+.updateDelete{  
+    width:100px;
+    height: 30px;
+    padding:0;
+}
+#navs{
+    height:60px;
+    padding:5px;
+}
+#logo{
+    font-size: 30px;
+    padding:10px;
+    background:white;
+    border-radius: 50%;
+}
+#logoText{
+    font-size:30px;
+    background:white;
+    padding-left: 50px;
+    border-radius:10px;
+    margin-left: -10px;
+    padding-right:10px;
+}
+#check{
+    font-size: 100px;
+    padding:10px;
+}
+#table{
+    display:none;
+    width:90%;
+    height:500px;
+    padding:20px;
+    margin-top:200px;
+}
+.overflow-auto {
+    min-height: 50px;
+  }
+
+  #card::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+  }
+
+  #card::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(left, #fff, #e4e4e4);
+    border: 1px solid #aaa;
+  }
+
+  #card::-webkit-scrollbar-thumb:hover {
+    background: #fff;
+  }
+
+  #card::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(left, #22ADD4, #1E98BA);
+  }
+
+  #card::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+  }
+
+  /* start here for modal */
+
+  #school{
+      padding-top:20px;
+      padding-right:20px;
+      font-weight: bold;
+  }
+  #profile{
+      height: 220px;
+      width: 180px;
+  }
+  .Sname{
+    padding-left:70px;
+  }
+  .padding{
+      padding:0px;
+      margin-bottom:0px;
+  }
+  .studentInformationPadding{
+    padding-left:30px;
+  }
+  .Nsize{
+      font-size: 13px;
+      margin-bottom:0px;
+  }
+  .test{
+      background:gray
+  }
+  #address{
+      margin:0px;
+  }
+  .visitorsInfo{
+    background:white;
+    height:525px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top:2px solid #ededed;
+    border-bottom:2px solid #ededed;
+    border-right:2px solid #ededed;
+    padding-left:0px;
+  }
+  #vSubmit{
+      width:200px;
+      height: 40px;
+  }
+  #vClose{
+      height:40px;
+      width:150px;
+  }
+  .Visitors{
+      padding-top:25px;
+      padding-bottom: 25px;
+      height:575px;
+      background:url('bgVisitors.jpg');
+      background-repeat: no-repeat;
+      background-size: 100% 575px;
+  }
+  #VisitorsInfoHeader{
+      font-size:20px;
+      margin-top:20px;
+  }
+  .breaker{
+      height:1px;
+      color:black;
+      width:80%;
+      background-color:black;
+  }
+  .vInfo{
+      margin:0px;
+      margin-top:-10px;
+      height:40px;
+      width:100%;
+      border:none;
+      border-bottom:1px solid gray;
+      padding-left:10px;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 15px;
+    }
+    ::-webkit-scrollbar-track-piece  {
+    background-color: #f5f2f2;
+    }
+    ::-webkit-scrollbar-thumb:vertical {
+    height: 30px;
+    background-color: #c4c4c4;
+    }
