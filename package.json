@@ -21,8 +21,9 @@
   "homepage": "https://github.com/futureCode16/AIS#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "moment": "^2.24.0",
-    "mongoose": "^5.7.9"
+    "mongoose": "^5.7.12"
   }
 }

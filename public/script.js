@@ -16,10 +16,22 @@ $(document).ready(function () {
       var check;
       apiRequest(url, studentData, method).then(res => {
         check = res;
+        console.log(res);
         if (check.exists) {
-          $('#addModal').modal('toggle');
-          $('#addModal').modal('show');
+          $('#VisitorLog').modal('toggle');
+          $('#VisitorLog').modal('show');
           $('#modalName').html(studentData.lastname + ", " + studentData.firstname);
+          var name = check.name.firstname+' '+check.name.lastname;
+          var address = check.address;
+          var batch = check.batch;
+          var age = check.age;
+          var gender = check.gender;
+
+          $('#sName').html(name);
+          $('#sAddress').html(address);
+          $('#sBatch').html(batch);
+          $('#sAge').html(age);
+          $('#sGender').html(gender);
         } else {
           swal({
             icon: "error",
@@ -31,9 +43,14 @@ $(document).ready(function () {
     }
   });
 
-  $('#close').click(function () {
+  $('#vClose').click(function () {
     student = {};
     studentName = "";
+    $('#name').val("");
+    $('#Vfname').val("");
+    $('#Vlname').val("");
+    $('#Vage').val("");
+    $('#Vaddress').val("");
   })
 
   $('#retrieveAll').click(function () {
@@ -46,8 +63,8 @@ $(document).ready(function () {
       var body = res.data.body;
       var update = '<button id="tableUpdate" type="button" class="btn btn-outline-primary">update</button>';
       var Delete = '<button id="tabledelete"type="button" class="btn btn-outline-danger">delete</button>';
-      if($("table tbody tr").length >=1){
-        for(var i = 0; i < $("table tbody tr").length; ++i){
+      if ($("table tbody tr").length >= 1) {
+        for (var i = 0; i < $("table tbody tr").length; ++i) {
           $("table tbody tr").remove();
         }
       }
@@ -116,15 +133,15 @@ $(document).ready(function () {
 
   })
 
-  $('#save').on('click', function () {
-    var firstName = $('#firstName').val();
-    var lastName = $('#lastName').val();
-    var age = $('#age').val();
-    var gender = $('#sex option:selected').text()
-    var address = $('#Address').val();
+  $('#vSubmit').on('click', function () {
+    var firstName = $('#Vfname').val();
+    var lastName = $('#Vlname').val();
+    var age = $('#Vage').val();
+    var gender = $('#Vsex option:selected').text()
+    var address = $('#Vaddress').val();
     let requestUrl = 'http://localhost:8080/add';
     let method = 'PUT'
-    var visitors = { 'firstname': firstName, 'lastname': lastName, 'age': age, 'gender': gender, 'address': address, 'date':moment().format('MMMM Do YYYY, h:mm:ss a')};
+    var visitors = { 'firstname': firstName, 'lastname': lastName, 'age': age, 'gender': gender, 'address': address, 'date': moment().format('MMMM Do YYYY, h:mm:ss a') };
 
     console.log(moment().format('MMMM Do YYYY, h:mm:ss a'))
 
@@ -135,6 +152,10 @@ $(document).ready(function () {
         icon: "success",
         text: "Visitor has been added!"
       });
+      $('#Vfname').val("");
+      $('#Vlname').val("");
+      $('#Vage').val("");
+      $('#Vaddress').val("");
     });
   })
 

@@ -3,11 +3,12 @@ let models = require("./schema");
 module.exports = function(student, res) {
     models.Visitors.findOne({name:student}, (err, visitors) => {
         if(visitors !== null){
-            res.send({exists:true})
+            visitors["exists"] = true;
+            res.send(visitors);
         }else{
             res.send({exists:false})
         }
-    }).catch(err => {
+    }).lean().catch(err => {
         if (err) {
             console.log(err);
             res.status(503).json({
