@@ -21,6 +21,10 @@ app.all('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.all('/chart', function (req, res) {
+    res.sendFile(path.join(__dirname, 'chart.html'));
+});
+
 app.get('/checking', function (req, res) {
     check(req.query,res)
 })
