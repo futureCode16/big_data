@@ -75,21 +75,22 @@
         let fname = $('#firstname').val()
         let lname = $('#lastname').val()
         console.log(fname)
-        $.ajax({
-            type: "post",
-            url: "http://localhost:3000/retrieve",
-            // dataType: "jsonp",
-            //   contentType: "application/json; charset=UTF-8",
-            crossDomain: true,
-            data: { "firstname": fname, "lastname": lname },
-            success: function (data) {
-                content.push(data)
-                console.log(content)
-                $('#myChart2').show()
-                lineChart(ctx2);
-            }
-        });
-
+        // $.ajax({
+        //     type: "get",
+        //     url: "http://localhost:3000/checking",
+        //     // dataType: "jsonp",
+        //     //   contentType: "application/json; charset=UTF-8",
+        //     crossDomain: true,
+        //     data: { "firstname": fname, "lastname": lname },
+        //     success: function (data) {
+        //         content.push(data)
+        //         console.log(content)
+        //         $('#myChart2').show()
+        //         lineChart(ctx2);
+        //     }
+        // });
+        $('#myChart2').show()
+        lineChart(ctx2);
     })
 
     function barChart(ctx) {
