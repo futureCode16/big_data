@@ -225,7 +225,7 @@ body{
     padding:0px;
     margin-top:7px;
 }
-#statistics{
+#statistics, #home{
     height:40px;
     color:white;
     width:200px;
