@@ -66,7 +66,7 @@ body{
     height:60px;
     padding:5px;
 }
-#logo{
+/* #logo{
     font-size: 30px;
     padding:10px;
     background:white;
@@ -79,6 +79,12 @@ body{
     border-radius:10px;
     margin-left: -10px;
     padding-right:10px;
+} */
+#logo{
+    height:50px;
+    width:220px;
+    border-radius:10px;
+    padding-bottom:3px;
 }
 #check{
     font-size: 100px;
@@ -207,3 +213,18 @@ body{
     height: 30px;
     background-color: #c4c4c4;
     }
+#logout{
+    width:100px;
+    height:35px;
+    font-weight:bold;
+    border-radius:20px;
+    padding:0px;
+    margin-top:7px;
+}
+#statistics{
+    height:40px;
+    color:white;
+    width:200px;
+    border:none;
+    font-size: 23px;
+}
