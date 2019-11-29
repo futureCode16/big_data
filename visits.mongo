@@ -1,0 +1,8 @@
+db.visitors.aggregate([{$match: {"_id":ObjectId("5dd39303b0685d2a4819263d")}}, {$project: {"visitors": {$size: "$visitors"}}}])
+
+db.visitors.aggregate([{$group: {"_id":ObjectId("5dd39303b0685d2a4819263d"), "_id": "address", "_id": {"date": /2019/}}}, {$project: {"visitors": {$size: "$visitors"}}}])
+
+
+db.visitors.aggregate([{$project:{"visitors": {$size: "$visitors"}}}, {$match:{"date": /2019/}}, {$group:{"_id": "$address"}}])
+
+db.visitors.aggregate([{$project:{"visitors": {$size: "$visitors"}}}, {$match:{"date": /2019/}}, {$group:{"_id":ObjectId("5dd39303b0685d2a4819263d")}}]) 
