@@ -8,7 +8,7 @@ $(document).ready(function () {
     if (studentName !== "") {
       studentName = studentName.toLowerCase().split(',');
 
-      console.log('checking')
+      // console.log('checking')
 
       let method = 'GET'
       let url = 'http://localhost:8080/checking';
@@ -16,7 +16,7 @@ $(document).ready(function () {
       var check;
       apiRequest(url, studentData, method).then(res => {
         check = res;
-        console.log(res);
+        // console.log(res);
         if (check.exists) {
           $('#VisitorLog').modal('toggle');
           $('#VisitorLog').modal('show');
@@ -37,7 +37,7 @@ $(document).ready(function () {
             icon: "error",
             text: "Student not Found!"
           });
-          console.log('Student not Found!')
+          // console.log('Student not Found!')
         }
       });
     }
@@ -121,7 +121,7 @@ $(document).ready(function () {
       let data = { 'id': b, 'firstname': updatedFirstName, 'lastname': updatedLastName, 'age': updatedAge, 'gender': updatedGender, 'address': updatedAddress };
 
       apiRequest(url, data, method).then(res => {
-        console.log(res)
+        // console.log(res)
         row.eq(1).text(res.data.body.lastname)
         row.eq(2).text(res.data.body.firstname)
         row.eq(3).text(res.data.body.age)
@@ -143,7 +143,7 @@ $(document).ready(function () {
     let method = 'PUT'
     var visitors = { 'firstname': firstName, 'lastname': lastName, 'age': age, 'gender': gender, 'address': address, 'date': moment().format('MMMM Do YYYY, h:mm:ss a') };
 
-    console.log(moment().format('MMMM Do YYYY, h:mm:ss a'))
+    // console.log(moment().format('MMMM Do YYYY, h:mm:ss a'))
 
     let data = { student: studentData, visitor: visitors };
 
