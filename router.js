@@ -18,7 +18,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'));
 app.use(express.static('views'));
 
-app.all('/', function (req, res) {
+app.get('/', function(req, res){
+    res.sendfile(path.join(__dirname, 'index.html'));
+  });
+
+app.all('/index.html', function (req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
