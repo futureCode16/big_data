@@ -19,11 +19,11 @@ app.use(express.static('public'));
 app.use(express.static('views'));
 
 app.get('/', function(req, res){
-    res.sendfile(path.join(__dirname, 'index.html'));
-  });
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
-app.all('/statistics', function (req, res) {
-    res.sendFile(path.join(__dirname,'../big_data/views/chart.html'));
+app.all('/index.html', function (req, res) {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/checking', function (req, res) {
