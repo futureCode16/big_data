@@ -235,3 +235,10 @@ body{
     padding:0px;
     margin-top:5px;
 }
+.alert{
+    margin-top:-40px;
+    display: none;
+    margin-bottom:0px;
+    height: 40px;
+    font-size: 12px;
+}

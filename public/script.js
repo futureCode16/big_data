@@ -21,7 +21,7 @@ $(document).ready(function () {
           $('#VisitorLog').modal('toggle');
           $('#VisitorLog').modal('show');
           $('#modalName').html(studentData.lastname + ", " + studentData.firstname);
-          var name = check.name.firstname+' '+check.name.lastname;
+          var name = check.name.firstname + ' ' + check.name.lastname;
           var address = check.address;
           var batch = check.batch;
           var age = check.age;
@@ -37,7 +37,6 @@ $(document).ready(function () {
             icon: "error",
             text: "Student not Found!"
           });
-          // console.log('Student not Found!')
         }
       });
     }
@@ -136,7 +135,7 @@ $(document).ready(function () {
   $('#vSubmit').on('click', function () {
     var firstName = $('#Vfname').val();
     var lastName = $('#Vlname').val();
-    var age = $('#Vage').val();
+    var age = Number($('#Vage').val());
     var gender = $('#Vsex option:selected').text()
     var address = $('#Vaddress').val();
     let requestUrl = 'http://localhost:8080/add';
@@ -147,16 +146,22 @@ $(document).ready(function () {
 
     let data = { student: studentData, visitor: visitors };
 
-    apiRequest(requestUrl, data, method).then(res => {
-      swal({
-        icon: "success",
-        text: "Visitor has been added!"
+    console.log(age)
+    if (firstName !== "" && lastName !== "" && age !== 0 && address !== "") {
+      apiRequest(requestUrl, data, method).then(res => {
+        swal({
+          icon: "success",
+          text: "Visitor has been added!"
+        });
+        $('#Vfname').val("");
+        $('#Vlname').val("");
+        $('#Vage').val("");
+        $('#Vaddress').val("");
       });
-      $('#Vfname').val("");
-      $('#Vlname').val("");
-      $('#Vage').val("");
-      $('#Vaddress').val("");
-    });
+    }else{
+      $('.alert').fadeIn();
+      $('.alert').fadeOut(3000);
+    }
   })
 
   function apiRequest(apiurl, apidata, method) {
