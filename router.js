@@ -26,6 +26,10 @@ app.all('/statistics', function (req, res) {
     res.sendFile(path.join(__dirname,'../big_data/views/chart.html'));
 });
 
+app.all('/visitors', function (req, res) {
+    res.sendFile(path.join(__dirname,'../big_data/views/visitors.html'));
+});
+
 app.get('/checking', function (req, res) {
     check(req.query,res)
 })

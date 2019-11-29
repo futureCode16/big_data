@@ -18,6 +18,9 @@ body{
 #name{
     width:400px;
 }
+#retrieveAll {
+    width: 100%;
+}
 .search{
     margin-top:20%;
 }
@@ -234,4 +237,7 @@ body{
     font-size: 23px;
     padding:0px;
     margin-top:5px;
+}
+#retrieve{
+    width: 100%;
 }
