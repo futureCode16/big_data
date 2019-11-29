@@ -46,6 +46,11 @@ app.put('/delete/:id', (req, res) => {
     Delete(req.params.id,req.body.id, res);
 });
 
+app.get('*', function(req, res){
+    res.sendFile(path.join(__dirname, './views/404.html'));
+  });
+
+
 http.listen(port, function () {
     console.log('listening to port: ' + port);
 });
