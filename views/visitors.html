@@ -7,12 +7,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"
-        integrity="sha256-H9jAz//QLkDOy/nzE9G4aYijQtkLt9FvGmdUTwBk6gs=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js" integrity="sha256-H9jAz//QLkDOy/nzE9G4aYijQtkLt9FvGmdUTwBk6gs="
+        crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a1813e4a30.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 
@@ -25,9 +25,9 @@
             <div id="navs" class="row">
                 <div class="col-md-6 d-flex justify-content-start">
                     <img id="logo" src="logo.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="chart.html"><button id="statistics" type="button" class="btn btn-outline-primary"><i
-                                class="far fa-chart-bar"></i>&nbsp;Statistics</button></a><a href="index.html"><button id="statistics" type="button" class="btn btn-outline-primary"><i
-                                    class="fas fa-home"></i>&nbsp;Home</button></a> 
+                    <a href="chart.html"><button id="statistics" type="button" class="btn btn-outline-primary"><i class="far fa-chart-bar"></i>&nbsp;Statistics</button></a><a
+                        href="index.html"><button id="statistics" type="button" class="btn btn-outline-primary"><i
+                                class="fas fa-home"></i>&nbsp;Home</button></a>
                 </div>
                 <div class="col-md-6 d-flex justify-content-end">
                     <button id="logout" type="button" class="btn btn-light">LogOut</button>
@@ -73,41 +73,48 @@
                 </div>
                 <div class="modal-body">
                     <div class="tab-content">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input id="updateFirstName" type="text" class="form-control" placeholder="First Name"
-                                    aria-label="First Name" aria-describedby="basic-addon1" value="">
-
-                                <input id="updateLastName" type="text" class="form-control" placeholder="Last Name"
-                                    aria-label="Last Name" aria-describedby="basic-addon1" value="">
-                            </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="sex"><i class="fa fa-intersex"></i></label>
-                            </div>
-                            <select class="custom-select" id="updateSex">
+                        <div class="col-md-12">
+                            <p id="VisitorsInfoHeader">Visitor's Information</p>
+                        </div>
+                        <hr>
+                        <div class=col-md-12>
+                            <p>Firstname:</p>
+                        </div>
+                        <div class="col-md-12">
+                            <input id="updateFirstName" class="vInfo" type="text" placeholder="First Name">
+                        </div>
+                        <div class=col-md-12>
+                            <p>Lastname:</p>
+                        </div>
+                        <div class="col-md-12">
+                            <input id="updateLastName" class="vInfo" type="text" placeholder="Last Name">
+                        </div>
+                        <div class=col-md-12>
+                            <p>Age:</p>
+                        </div>
+                        <div class="col-md-12">
+                            <input id="updateAge" class="vInfo" type="Number" placeholder="Age">
+                        </div>
+                        <div class="col-md-12">
+                            <p for="sex">Gender:</p>
+                        </div>
+                        <div class="col-md-12">
+                            <select class="vInfo" id="updateSex">
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
-
-                            <input id="updateAge" type="number" class="form-control" placeholder="age" aria-label="age"
-                                aria-describedby="basic-addon1">
                         </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-home"></i></span>
-                            </div>
-                            <input id="updateAddress" type="text" class="form-control" placeholder="Address"
-                                aria-label="Address" aria-describedby="basic-addon1" value="">
+                        <div class=col-md-12>
+                            <p>Address:</p>
+                        </div>
+                        <div class="col-md-12">
+                            <input id="updateAddress" class="vInfo" type="text" placeholder="Address">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button id="updateSave" type="button" class="btn btn-outline-success">save</button>
-                    <button id="updateClose" type="button" class="btn btn-outline-danger"
-                        data-dismiss="modal">close</button>
+                    <button id="updateClose" type="button" class="btn btn-outline-danger" data-dismiss="modal">close</button>
                 </div>
             </div>
         </div>

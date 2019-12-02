@@ -27,8 +27,6 @@
                     <img id="logo" src="logo.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="chart.html"><button id="statistics" type="button" class="btn btn-outline-primary"><i
                                 class="far fa-chart-bar"></i>&nbsp;Statistics</button></a>
-                    <!-- <i id="logo" class="text-black fas fa-users"></i> 
-                    <span><b id="logoText" class="text-black">Visit</b></span>-->
                 </div>
                 <div class="col-md-6 d-flex justify-content-end">
                     <button id="logout" type="button" class="btn btn-light">LogOut</button>
@@ -56,11 +54,9 @@
                         <hr>
                         <div class="row">
                             <div class="col-md-6 ">
-                                <!-- <p class="text-left text-black"><b>Date: </b><span>11/6/2019</span> </p> -->
+                                
                             </div>
                             <div class="col-md-6">
-                                <!-- <p class="text-right text-black"><b>No. Of Visitors: </b><span
-                                        id="visitorsCount">0</span> </p> -->
                             </div>
                         <a href="visitors.html"><button type="button" id="retrieve"
                                 class="btn btn-outline-success btn-lg">Retrieve All</button></a>
@@ -70,13 +66,6 @@
             </div>
         </div>
     </center>
-
-    <!-- Button trigger modal
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
-        Launch demo modal
-    </button> -->
-
-    <!-- Modal -->
     <div class="modal fade" id="VisitorLog" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
         aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
@@ -241,111 +230,6 @@
             </div>
         </div>
     </div>
-    <br>
-    <br>
-    <div class="modal fade center hide" id="updateModal" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>UPDATE INFORMATION</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="tab-content">
-                        <div id="home" class="container tab-pane active">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input id="updateFirstName" type="text" class="form-control" placeholder="First Name"
-                                    aria-label="First Name" aria-describedby="basic-addon1" value="">
-                                <span>
-                                    <input id="updateLastName" type="text" class="form-control" placeholder="Last Name"
-                                        aria-label="Last Name" aria-describedby="basic-addon1" value="">
-                                </span>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="sex"><i class="fa fa-intersex"></i></label>
-                                </div>
-                                <select class="custom-select" id="updateSex">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                                <span>
-                                    <input id="updateAge" type="number" class="form-control" placeholder="age"
-                                        aria-label="age" aria-describedby="basic-addon1">
-                                </span>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-home"></i></span>
-                                </div>
-                                <input id="updateAddress" type="text" class="form-control" placeholder="Address"
-                                    aria-label="Address" aria-describedby="basic-addon1" value="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="updateSave" type="button" class="btn btn-outline-success">save</button>
-                    <button id="updateClose" type="button" class="btn btn-outline-danger"
-                        data-dismiss="modal">close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade center" id="addModal" class="modal hide" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <b>
-                        <p id="modalName" class="modal-title">Name</p>
-                    </b>
-                </div>
-                <div class="modal-body">
-                    <div class="tab-content">
-                        <div id="home" class="container tab-pane active">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input id="firstName" type="text" class="form-control" placeholder="First Name"
-                                    aria-label="First Name" aria-describedby="basic-addon1" value="">
-                                <span>
-                                    <input id="lastName" type="text" class="form-control" placeholder="Last Name"
-                                        aria-label="Last Name" aria-describedby="basic-addon1" value="">
-                                </span>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="sex"><i class="fa fa-intersex"></i></label>
-                                </div>
-                                <select class="custom-select" id="sex">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                                <span>
-                                    <input id="age" type="number" class="form-control" placeholder="age"
-                                        aria-label="age" aria-describedby="basic-addon1">
-                                </span>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-home"></i></span>
-                                </div>
-                                <input id="Address" type="text" class="form-control" placeholder="Address"
-                                    aria-label="Address" aria-describedby="basic-addon1" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button id="save" type="button" class="btn btn-outline-success">save</button>
-                        <button id="close" type="button" class="btn btn-outline-danger"
-                            data-dismiss="modal">close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <script src="script.js"></script>
 </body>
 

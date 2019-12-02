@@ -16,11 +16,11 @@
             if (body[i].visitors.length !== 0) {
               var data = '<tr id=' + body[i]._id + ' class=' + body[i].visitors[x].id + '>' +
                 '<td>' + body[i].name.lastname + ', ' + body[i].name.firstname + '</td>' +
-                '<td>' + body[i].visitors[x].lastname + '</td>' +
-                '<td>' + body[i].visitors[x].firstname + '</td>' +
-                '<td>' + body[i].visitors[x].age + '</td>' +
-                '<td>' + body[i].visitors[x].gender + '</td>' +
-                '<td>' + body[i].visitors[x].address + '</td>' +
+                '<td id="lastname">' + body[i].visitors[x].lastname + '</td>' +
+                '<td id="firstname">' + body[i].visitors[x].firstname + '</td>' +
+                '<td id="age">' + body[i].visitors[x].age + '</td>' +
+                '<td id="gender">' + body[i].visitors[x].gender + '</td>' +
+                '<td id="address">' + body[i].visitors[x].address + '</td>' +
                 '<td>' + update + '</td>' +
                 '<td>' + Delete + '</td>' +
                 '</tr>';
@@ -46,11 +46,9 @@
   
     $(document).on('click', '#tableUpdate', function () {
       var row = $(this).closest('tr').children()
-  
       var a = $(this).closest('tr').attr('id');
       var b = $(this).closest('tr').attr('class');
       $('#updateModal').modal('show');
-  
       $('#updateSave').click(function () {
         var updatedFirstName = $('#updateFirstName').val();
         var updatedLastName = $('#updateLastName').val();
