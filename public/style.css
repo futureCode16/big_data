@@ -293,3 +293,19 @@ body{
     font-size:12px;
     margin:0px;
 }
+#vListEdit{
+    padding-top:15px;
+    padding-left:13px;
+    padding-right:13px;
+    padding-bottom:10px;
+    margin:0px;
+    margin-right:10px;
+    border:2px solid white;
+    border-radius:50%;
+}
+#vListEdit:hover{
+    background:white;
+    border-radius:50%;
+    box-shadow: 0px 0px 5px black;
+    cursor: pointer;
+}

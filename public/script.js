@@ -38,7 +38,7 @@ $(document).ready(function () {
           check.visitors.forEach(function (item) {
             let div = "<tr id=" + item._id + "><td><div class='col-md-12'>" +
               "<div class='visitorList col-md-12 d-flex justify-content-end'>" +
-              "<b id=vListDelete>x</b></div>" +
+              "<i id='vListEdit' class='fas fa-pencil-alt'></i><b id=vListDelete>x</b></div>" +
               "<p><b>First Name : </b>" + item.firstname + "</p>" +
               "<p><b>Last Name : </b>" + item.lastname + "</p>" +
               "<p><b>Gender : </b>" + item.gender + "</p>" +
