@@ -164,7 +164,7 @@ body{
   }
   .visitorsInfo{
     background:white;
-    height:525px;
+    height:625px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     border-top:2px solid #ededed;
@@ -183,10 +183,11 @@ body{
   .Visitors{
       padding-top:25px;
       padding-bottom: 25px;
-      height:575px;
+      height:675px;
       background:url('bgVisitors.jpg');
       background-repeat: no-repeat;
-      background-size: 100% 575px;
+      background-size: 100% 675px;
+      margin-bottom:100px;
   }
   #VisitorsInfoHeader{
       font-size:20px;
