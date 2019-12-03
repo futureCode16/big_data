@@ -19,17 +19,12 @@ $(document).ready(function () {
     studentName = $('#name').val()
     if (studentName !== "") {
       studentName = studentName.toLowerCase().split(',');
-
-      // console.log('checking')
-
       let method = 'GET'
       let url = 'http://localhost:8080/checking';
       studentData = { firstname: studentName[1], lastname: studentName[0] };
       var check;
       apiRequest(url, studentData, method).then(res => {
         check = res;
-        // console.log(res);
-        // console.log(check)
         if (check.exists) {
           $('#VisitorLog').modal('toggle');
           $('#VisitorLog').modal('show');
@@ -50,13 +45,13 @@ $(document).ready(function () {
           check.visitors.forEach(function (item) {
             let div = "<tr id=" + item._id + "><td><div class='col-md-12'>" +
               "<div class='visitorList col-md-12 d-flex justify-content-end'>" +
-              "<i id='vListEdit' class='fas fa-pencil-alt'></i><b id=vListDelete>x</b></div>" +
-              "<p><b>First Name : </b>" + item.firstname + "</p>" +
-              "<p><b>Last Name : </b>" + item.lastname + "</p>" +
-              "<p><b>Gender : </b>" + item.gender + "</p>" +
-              "<p><b>Age : </b>" + item.age + "</p>" +
-              "<p><b>Address : </b>" + item.address + "</p>" +
-              "<p><b>Date/Time : </b>" + item.date + "</p>" +
+              "<i id='vListEdit' class='fas fa-pencil-alt'></i><i id=vListDelete class='far fa-trash-alt'></i></div>" +
+              "<p><b>First Name : </b><i id='vListFname'>" + item.firstname + "</i></p>" +
+              "<p><b>Last Name : </b><i id='vListLname'>" + item.lastname + "</i></p>" +
+              "<p><b>Gender : </b><i id='vListGender'>" + item.gender + "</i></p>" +
+              "<p><b>Age : </b><i id='vListAge'>" + item.age + "</i></p>" +
+              "<p><b>Address : </b><i id='vListAddress'>" + item.address + "</i></p>" +
+              "<p><b>Date/Time : </b><i id='vListDate'>" + item.date + "</i></p>" +
               "</div></td></tr>";
             $('#vTableList').append(div)
           })
@@ -66,7 +61,7 @@ $(document).ready(function () {
             text: "Student not Found!"
           });
         }
-
+        //add attribute to delete visitor info per student
         $(document).on('click', '#vListDelete', function () {
           var a = check._id;
           var b = $(this).closest('tr').attr('id');
@@ -79,11 +74,94 @@ $(document).ready(function () {
             }
           })
         });
+        //
+        //add attribute to Update visitor info per student
+        //
+        $(document).on('click', '#vListEdit', function () {
+          //
+          /*select all visitor's information*/
+          //
+          let vListFname = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(1).children().eq(1).text();
+          console.log(vListFname)
+          let vListLname = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(2).children().eq(1).text();
+          let vListGender = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(3).children().eq(1).text();
+          let vListAge = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(4).children().eq(1).text();
+          let vListAddress = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(5).children().eq(1).text();
+          let vListDate = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(6).children().eq(1).text();
+          let vListFnameClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(1).children().eq(1).text("");
+          let vListLnameClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(2).children().eq(1).text("");
+          let vListGenderClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(3).children().eq(1).text("");
+          let vListAgeClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(4).children().eq(1).text("");
+          let vListAddressClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(5).children().eq(1).text("");
+          let vListDateClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(6).children().eq(1).text("");
+          //
+          /*show all input Field*/
+          //
+          $('<input>', {
+            type: 'text',
+            id: 'foo',
+            class: 'vListInfoUpdate',
+            value: vListFname
+          }).appendTo(vListFnameClear);
+          $('<input>', {
+            type: 'text',
+            id: 'foo',
+            class: 'vListInfoUpdate',
+            value: vListLname
+          }).appendTo(vListLnameClear);
+          $('<input>', {
+            type: 'text',
+            id: 'foo',
+            class: 'vListInfoUpdate',
+            value: vListGender
+          }).appendTo(vListGenderClear);
+          $('<input>', {
+            type: 'text',
+            id: 'foo',
+            class: 'vListInfoUpdate',
+            value: vListAge
+          }).appendTo(vListAgeClear);
+          $('<input>', {
+            type: 'text',
+            id: 'foo',
+            class: 'vListInfoUpdate',
+            value: vListAddress
+          }).appendTo(vListAddressClear);
+          $('<input>', {
+            type: 'text',
+            id: 'foo',
+            class: 'vListInfoUpdate',
+            value: vListDate
+          }).appendTo(vListDateClear);
+          /*end of showing input Field*/
+          //
+          /*show submit and cancel button represented by x and a check*/
+          var vListSubmitCancel = "<div class='visitorList col-md-12 d-flex justify-content-end'>" +
+            "<i class='vListSubmitCancelc far fa-check-circle'></i><i class='vListSubmitCancelx far fa-times-circle'></i></div>"
+            $(this).closest('tr').children().eq(0).children().append(vListSubmitCancel);
+          /*end of showing x and a check*/
+          //
+          //
+          /* add attribute to cancel button represented by x */
+          //
+          $(document).on('click', '.vListSubmitCancelx', function () {
+            //
+            /*this field just bring back the previous value of the visitor's info*/
+            //
+            vListFnameClear.html(vListFname)
+            vListLnameClear.html(vListLname)
+            vListGenderClear.html(vListGender)
+            vListAgeClear.html(vListAge)
+            vListAddressClear.html(vListAddress)
+            vListDateClear.html(vListDate)
+            $(this).closest('tr').children().eq(0).children().eq(0).children().eq(7).remove() //remove the submit and cancel button
+          });
+        })
       });
     }
   });
 
-
+  //clear the input fields upon closing the modal
   $('#vClose').click(function () {
     student = {};
     studentName = "";
@@ -94,6 +172,7 @@ $(document).ready(function () {
     $('#Vaddress').val("");
   })
 
+  //retrieve all visitors
   $('#retrieveAll').click(function () {
     let method = "GET";
     let url = 'http://localhost:8080/retrieve-all';
@@ -128,6 +207,7 @@ $(document).ready(function () {
         }
       }
     });
+    //end of retrieving all visitors
   })
 
   $(document).on('click', '#tabledelete', function () {
