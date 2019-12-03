@@ -29,6 +29,7 @@ $(document).ready(function () {
       apiRequest(url, studentData, method).then(res => {
         check = res;
         // console.log(res);
+        // console.log(check)
         if (check.exists) {
           $('#VisitorLog').modal('toggle');
           $('#VisitorLog').modal('show');
@@ -44,15 +45,44 @@ $(document).ready(function () {
           $('#sBatch').html(batch);
           $('#sAge').html(age);
           $('#sGender').html(gender);
+
+          //show visitor per Student
+          check.visitors.forEach(function (item) {
+            let div = "<tr id=" + item._id + "><td><div class='col-md-12'>" +
+              "<div class='visitorList col-md-12 d-flex justify-content-end'>" +
+              "<i id='vListEdit' class='fas fa-pencil-alt'></i><b id=vListDelete>x</b></div>" +
+              "<p><b>First Name : </b>" + item.firstname + "</p>" +
+              "<p><b>Last Name : </b>" + item.lastname + "</p>" +
+              "<p><b>Gender : </b>" + item.gender + "</p>" +
+              "<p><b>Age : </b>" + item.age + "</p>" +
+              "<p><b>Address : </b>" + item.address + "</p>" +
+              "<p><b>Date/Time : </b>" + item.date + "</p>" +
+              "</div></td></tr>";
+            $('#vTableList').append(div)
+          })
         } else {
           swal({
             icon: "error",
             text: "Student not Found!"
           });
         }
+
+        $(document).on('click', '#vListDelete', function () {
+          var a = check._id;
+          var b = $(this).closest('tr').attr('id');
+          let url = 'http://localhost:8080/delete/' + a;
+          let data = { id: b };
+          let method = 'PUT'
+          apiRequest(url, data, method).then(res => {
+            if (res.data.body.nModified === 1) {
+              $('#' + b).remove();
+            }
+          })
+        });
       });
     }
   });
+
 
   $('#vClose').click(function () {
     student = {};
@@ -83,7 +113,7 @@ $(document).ready(function () {
       for (var i = 0; i < body.length; ++i) {
         for (var x = 0; x < body[i].visitors.length; ++x) {
           if (body[i].visitors.length !== 0) {
-            var data = '<tr id=' + body[i]._id + ' class=' + body[i].visitors[x].id + '>' +
+            var data = '<tr id=' + body[i]._id + ' class=' + body[i].visitors[x]._id + '>' +
               '<td>' + body[i].name.lastname + ', ' + body[i].name.firstname + '</td>' +
               '<td>' + body[i].visitors[x].lastname + '</td>' +
               '<td>' + body[i].visitors[x].firstname + '</td>' +
@@ -93,7 +123,7 @@ $(document).ready(function () {
               '<td>' + update + '</td>' +
               '<td>' + Delete + '</td>' +
               '</tr>';
-            $('tbody').css({ 'font-size': '12px' }).append(data);
+            $('#vRVisitors').css({ 'font-size': '12px' }).append(data);
           }
         }
       }
@@ -158,7 +188,7 @@ $(document).ready(function () {
 
     let data = { student: studentData, visitor: visitors };
 
-    console.log(age)
+    // console.log(age)
     if (firstName !== "" && lastName !== "" && age !== 0 && address !== "") {
       apiRequest(requestUrl, data, method).then(res => {
         swal({
