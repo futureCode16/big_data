@@ -1,4 +1,16 @@
+var placesAutocomplete = places({
+  container: document.querySelector('#Vaddress'),
+  type: 'city'
+});
+
+
+
 $(document).ready(function () {
+
+  $("#address-input").change(() => {
+    $("#address-input").prop('disabled', true);
+    alert("test")
+  })
 
   var studentName;
   var studentData;
