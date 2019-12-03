@@ -12,7 +12,7 @@ var visit = new Schema({
     address: String,
     visitors:[
         {
-            id:{type:ObjectId,unique:true},
+            // id:{type:ObjectId,unique:true},
             firstname:{type:String,required:true,unique:false},
             lastname:{type:String,required:true,unique:false},
             age:{type:Number, unique:false},
