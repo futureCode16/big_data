@@ -8,7 +8,7 @@ var visitorOfStudent = new Schema({
     age: { type: Number, unique: false },
     gender: { type: String, unique: false },
     address: { type: String, unique: false },
-    date: { type: String, unique: false }
+    date: { type: Date}
 })
 
 var visit = new Schema({

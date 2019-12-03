@@ -1,0 +1,31 @@
+
+db.visitors.find()
+
+db.visitors.aggregate([
+    { $unwind: "$visitors" },
+    {
+        $group: {_id: '$visitors.address',total:{$sum:1},
+        date: {$push: '$visitors.date'}
+        },
+    }
+])
+
+db.visitors.findOne({
+    "name.firstname":"chervin",
+    "name.lastname": "tanilon",
+    "visitors.date": {"$elemMatch": {$eq: "November 29th 2018, 2:09:45 pm"}}
+},{"name":false,"age":false, "batch":false})
+
+db.visitors.find({
+    "name.firstname": "chervin",
+    "name.lastname": "tanilon"
+    },{"visitors": 1,"_id":0})
+
+db.visitors.aggregate([
+    {
+        $unwind: '$visitors'
+    },
+    {
+        $group: {_id:'$visitors.date',total:{$sum:1}}
+    }
+])

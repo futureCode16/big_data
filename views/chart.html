@@ -37,9 +37,9 @@
                 <div class="input-group">
                     <select class="custom-select" id="selectedBatch">
                         <!-- <option selected>Choose...</option> -->
-                        <option selected value="Batch 23rd">Batch 23rd</option>
-                        <option value="Batch 24th">Batch 24th</option>
-                        <option value="Batch 25th">Batch 25th</option>
+                        <option selected value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
                     </select>
                     <div class="input-group-append">
                         <button class="btn btn-outline-primary" type="button" id="chart1-btn">View Statistics</button>
@@ -77,7 +77,7 @@
 
 </html>
 <script>
-    $('#statistics').on('click',()=>{
+    $('#statistics').on('click', () => {
         window.location.href = './index.html';
     })
     var ctx = $("#myChart")[0].getContext('2d');
@@ -86,52 +86,63 @@
     var content = []
     $('#myChart').hide()
     $('#myChart2').hide()
+
     $('#chart1-btn').on('click', () => {
-        $('#myChart').show()
-        barChart(ctx)
+        // $('#myChart').show()
+        // pieChart(ctx)
+        $.ajax({
+            type: "get",
+            url: `http://localhost:8080/chart/location/${$('#selectedBatch').val()}`,
+            // dataType: "jsonp",
+            //   contentType: "application/json; charset=UTF-8",
+            crossDomain: true,
+            success: function (data) {
+                let place = []
+                let total = []
+                console.log(data)
+                place = data.places
+                total = data.total
+                new pieChart(ctx,place,total);
+                $('#myChart').show()
+            }
+        });
         console.log($('#selectedBatch').val())
     })
+
     $('#chart2-btn').on('click', () => {
 
         let fname = $('#firstname').val()
         let lname = $('#lastname').val()
-        console.log(fname)
-        // $.ajax({
-        //     type: "get",
-        //     url: "http://localhost:3000/checking",
-        //     // dataType: "jsonp",
-        //     //   contentType: "application/json; charset=UTF-8",
-        //     crossDomain: true,
-        //     data: { "firstname": fname, "lastname": lname },
-        //     success: function (data) {
-        //         content.push(data)
-        //         console.log(content)
-        //         $('#myChart2').show()
-        //         lineChart(ctx2);
-        //     }
-        // });
+        console.log(lname)
+        $.ajax({
+            type: "get",
+            url: `http://localhost:8080/chart/perStudent/
+            ${fname}/${lname}`,
+            // dataType: "jsonp",
+            //   contentType: "application/json; charset=UTF-8",
+            crossDomain: true,
+            success: function (data) {
+
+                console.log(data)
+                $('#myChart2').show()
+                lineChart(ctx2);
+            }
+        });
         $('#myChart2').show()
         lineChart(ctx2);
     })
 
-    function barChart(ctx) {
+    function pieChart(ctx,place,total) {
         //VISITORS EVERY LOCATION PER YEAR
         //FOR PIE GRAPH
         data = {
             datasets: [{
-                data: [40, 20, 60, 10, 50, 30],
+                data: total,
                 //FOR THE DATA YOU CAN PUT HERE THE NUMBER OF VISITORS IN ONE LOCATION I.E (40 Visitors in Cebu)
             }],
             // These labels appear in the legend and in the tooltips when hovering different arcs
             // YOU CAN PUT THE PLACES HERE AS LABELS
-            labels: [
-                'Cebu',
-                'Leyte',
-                'Negros Occidental',
-                'Siquijor',
-                'Surigao',
-                'Masbate'
-            ]
+            labels: place
         };
 
         var chart = new Chart(ctx, {
