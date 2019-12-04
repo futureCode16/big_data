@@ -14,47 +14,38 @@ $(document).ready(function () {
 
   var studentName;
   var studentData;
+  var listOfVisitors = [];
 
   $("#go").click(function () {
     studentName = $('#name').val()
     if (studentName !== "") {
       studentName = studentName.toLowerCase().split(',');
+      let check = '';
       let method = 'GET'
       let url = 'http://localhost:8080/checking';
       studentData = { firstname: studentName[1], lastname: studentName[0] };
-      var check;
       apiRequest(url, studentData, method).then(res => {
         check = res;
+        listOfVisitors.push(check.visitors) //add the visitors of the specific student to the LIST above
         if (check.exists) {
           $('#VisitorLog').modal('toggle');
           $('#VisitorLog').modal('show');
           $('#modalName').html(studentData.lastname + ", " + studentData.firstname);
-          var name = check.name.firstname + ' ' + check.name.lastname;
-          var address = check.address;
-          var batch = check.batch;
-          var age = check.age;
-          var gender = check.gender;
+          let name = check.name.firstname + ' ' + check.name.lastname;
+          let address = check.address;
+          let batch = check.batch;
+          let age = check.age;
+          let gender = check.gender;
 
           $('#sName').html(name);
           $('#sAddress').html(address);
           $('#sBatch').html(batch);
           $('#sAge').html(age);
           $('#sGender').html(gender);
-
+          //
           //show visitor per Student
-          check.visitors.forEach(function (item) {
-            let div = "<tr id=" + item._id + "><td><div class='col-md-12'>" +
-              "<div class='visitorList col-md-12 d-flex justify-content-end'>" +
-              "<i id='vListEdit' class='fas fa-pencil-alt'></i><i id=vListDelete class='far fa-trash-alt'></i></div>" +
-              "<p><b>First Name : </b><i id='vListFname'>" + item.firstname + "</i></p>" +
-              "<p><b>Last Name : </b><i id='vListLname'>" + item.lastname + "</i></p>" +
-              "<p><b>Gender : </b><i id='vListGender'>" + item.gender + "</i></p>" +
-              "<p><b>Age : </b><i id='vListAge'>" + item.age + "</i></p>" +
-              "<p><b>Address : </b><i id='vListAddress'>" + item.address + "</i></p>" +
-              "<p><b>Date/Time : </b><i id='vListDate'>" + item.date + "</i></p>" +
-              "</div></td></tr>";
-            $('#vTableList').append(div)
-          })
+          //
+          showVisitors();
         } else {
           swal({
             icon: "error",
@@ -63,8 +54,8 @@ $(document).ready(function () {
         }
         //add attribute to delete visitor info per student
         $(document).on('click', '#vListDelete', function () {
-          var a = check._id;
-          var b = $(this).closest('tr').attr('id');
+          let a = check._id;
+          let b = $(this).closest('tr').attr('id');
           let url = 'http://localhost:8080/delete/' + a;
           let data = { id: b };
           let method = 'PUT'
@@ -136,9 +127,9 @@ $(document).ready(function () {
           /*end of showing input Field*/
           //
           /*show submit and cancel button represented by x and a check*/
-          var vListSubmitCancel = "<div class='visitorList col-md-12 d-flex justify-content-end'>" +
-            "<i class='vListSubmitCancelc far fa-check-circle'></i><i class='vListSubmitCancelx far fa-times-circle'></i></div>"
-            $(this).closest('tr').children().eq(0).children().append(vListSubmitCancel);
+          let vListSubmitCancel = "<div class='visitorList col-md-12 d-flex justify-content-end'>" +
+            "<i class='vListSubmitc far fa-check-circle'></i><i class='vListSubmitCancelx far fa-times-circle'></i></div>"
+          $(this).closest('tr').children().eq(0).children().append(vListSubmitCancel);
           /*end of showing x and a check*/
           //
           //
@@ -155,6 +146,38 @@ $(document).ready(function () {
             vListAddressClear.html(vListAddress)
             vListDateClear.html(vListDate)
             $(this).closest('tr').children().eq(0).children().eq(0).children().eq(7).remove() //remove the submit and cancel button
+          });
+          //
+          //
+          /*add attribute to submit button represented by a check symbol*/
+          //
+          $(document).on('click', '.vListSubmitc', function () {
+            console.log('student id'+check._id)
+            let vUpdatedFname = vListFnameClear.children().eq(0).val();
+            let vUpdatedLname = vListLnameClear.children().eq(0).val();
+            let vUpdatedGender = vListGenderClear.children().eq(0).val();
+            let vUpdatedAge = vListAgeClear.children().eq(0).val();
+            let vUpdatedAddress = vListAddressClear.children().eq(0).val();
+            let vUpdatedDate = vListDateClear.children().eq(0).val();
+            let visitorId = $(this).closest('tr').attr('id')
+            let url = 'http://localhost:8080/update/' + check._id;
+            let method = 'PUT'
+            let data = { '_id': visitorId, 'firstname': vUpdatedFname, 'lastname': vUpdatedLname, 'age': vUpdatedAge, 'gender': vUpdatedGender, 'address': vUpdatedAddress,'date':vUpdatedDate};
+            apiRequest(url,data,method).then(res =>{
+              $('#vTableList').empty();
+              for(var i = 0;i < listOfVisitors[0].length; ++i){
+                // console.log(JSON.stringify(listOfVisitors[0][i]))
+                if(listOfVisitors[0][i]._id===res.data.body._id){
+                  listOfVisitors[0].splice(i,1);
+                  listOfVisitors[0].splice(i, 0, res.data.body);
+                  // listOfVisitors[0].push(res.data.body)
+                  // console.log(JSON.stringify(listOfVisitors[0]))
+                }
+              }
+              showVisitors();
+              // console.log(res)
+            })
+            // console.log($(this).closest('tr').attr('id'))
           });
         })
       });
@@ -285,6 +308,22 @@ $(document).ready(function () {
       $('.alert').fadeOut(3000);
     }
   })
+
+  function showVisitors() {
+    listOfVisitors[0].forEach(function (item) {
+      let div = "<tr id=" + item._id + "><td><div class='col-md-12'>" +
+        "<div class='visitorList col-md-12 d-flex justify-content-end'>" +
+        "<i id='vListEdit' class='fas fa-pencil-alt'></i><i id=vListDelete class='far fa-trash-alt'></i></div>" +
+        "<p><b>First Name : </b><i id='vListFname'>" + item.firstname + "</i></p>" +
+        "<p><b>Last Name : </b><i id='vListLname'>" + item.lastname + "</i></p>" +
+        "<p><b>Gender : </b><i id='vListGender'>" + item.gender + "</i></p>" +
+        "<p><b>Age : </b><i id='vListAge'>" + item.age + "</i></p>" +
+        "<p><b>Address : </b><i id='vListAddress'>" + item.address + "</i></p>" +
+        "<p><b>Date/Time : </b><i id='vListDate'>" + item.date + "</i></p>" +
+        "</div></td></tr>";
+      $('#vTableList').append(div)
+    })
+  }
 
   function apiRequest(apiurl, apidata, method) {
     return new Promise((resolve, reject) => {
