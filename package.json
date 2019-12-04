@@ -4,7 +4,8 @@
   "description": "visiting log",
   "main": "router.js",
   "scripts": {
-    "test": "node router.js"
+    "test": "node router.js",
+    "start": "nodemon router.js"
   },
   "repository": {
     "type": "git",
