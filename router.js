@@ -105,16 +105,12 @@ app.get('/chart/location/:year', (req, res) => {
 
 app.get('/chart/perStudent/:firstname/:lastname', (req, res) => {
     let firstname = req.params.firstname.
-        substring(12, req.params.firstname.length)
+        substring(8, req.params.firstname.length)
     let lastname = req.params.lastname
+    let date = []
+    let total = []
+    console.log(firstname)
 
-    // res.send('OKAYY')
-    // schema.Visitors.findOne({
-    //     "name.firstname":firstname,
-    //     "name.lastname":lastname
-    // },(err,student)=>{
-    //     student
-    // }).select({"visitors":1,"_id":0})
     schema.Visitors.aggregate([
         {
             $match: {
@@ -129,14 +125,27 @@ app.get('/chart/perStudent/:firstname/:lastname', (req, res) => {
             $group: { _id: '$visitors.date', total: { $sum: 1 } }
         }
     ], (err, result) => {
-        // for (var i = 0; result.length; ++i) {
-        //     console.log(result)
-        //     let regex = new RegExp(`.*2018.*`)
-        //     if(regex.test(result[i]._id)){}
-        // }
+        //SORT TO ENABLE COUNTING
+        result.sort(function (a, b) {
+            return a._id > b._id;
+        });
 
-        //I STOPPED HERE, NEEDED TO ADD DATE ON DB IN DATABASE LEVEL
-        console.log(result)
+        var prev;
+        for (var i = 0; i < result.length; i++) {
+            var sub = result[i]._id.substring(13, 17)
+            if (sub !== prev) {
+                date.push(sub)
+                total.push(1)
+            } else {
+                total[total.length - 1]++;
+            }
+            prev = sub;
+        }
+        let data = {
+            date: date,
+            total: total
+        }
+        res.send(data)
     })
 
 })

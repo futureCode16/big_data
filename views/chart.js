@@ -7,10 +7,12 @@ var input = document.getElementById("input")
 var content = []
 $('#myChart').hide()
 $('#myChart2').hide()
-
+var barChart = null;
+var lineChart = null;
 $('#chart1-btn').on('click', () => {
     // $('#myChart').show()
     // pieChart(ctx)
+
     $.ajax({
         type: "get",
         url: `http://localhost:8080/chart/location/${$('#selectedBatch').val()}`,
@@ -20,10 +22,46 @@ $('#chart1-btn').on('click', () => {
         success: function (data) {
             let place = []
             let total = []
+           
             console.log(data)
             place = data.places
             total = data.total
-            new pieChart(ctx,place,total);
+
+            if (barChart) barChart.destroy()
+            //VISITORS EVERY LOCATION PER YEAR
+            //FOR PIE GRAPH
+            data = {
+                datasets: [{
+                    data: total,
+                    //FOR THE DATA YOU CAN PUT HERE THE NUMBER OF VISITORS IN ONE LOCATION I.E (40 Visitors in Cebu)
+                }],
+                // These labels appear in the legend and in the tooltips when hovering different arcs
+                // YOU CAN PUT THE PLACES HERE AS LABELS
+                labels: place
+            };
+
+            barChart = new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        colorschemes: {
+                            scheme: 'office.Solstice6'
+                        }
+                    },
+                    legend: {
+                        position: "bottom"
+                    },
+                    layout: {
+                        padding: {
+                            left: 40,
+                            right: 40,
+                            top: 20
+                        }
+                    },
+                }
+            });
             $('#myChart').show()
         }
     });
@@ -44,90 +82,53 @@ $('#chart2-btn').on('click', () => {
         crossDomain: true,
         success: function (data) {
 
-            console.log(data)
+            let date = data.date
+            let total = data.total
+           //VISITORS OF A CERTAIN STUDENT PER YEAR
+            //FOR LINE CHART
+        
+            var gradientStroke = ctx2.createLinearGradient(1200, 0, 100, 0);
+            gradientStroke.addColorStop(0, '#ff5757');
+            gradientStroke.addColorStop(1, '#578cff');
+            
+            if (lineChart) lineChart.destroy()
+
+            lineChart = new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: date,
+                    datasets: [{
+                        label: "Chervin Tanilon",
+                        borderColor: gradientStroke,
+                        pointRadius: 0,
+                        fill: true,
+        
+                        backgroundColor: gradientStroke,
+                        borderWidth: 1,
+                        data: total //I CAN PUT HERE THE N VISITORS OF A CERTAIN STUDENT EVERY YEAR AS ELEMENT
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: "bottom"
+                    },
+                    layout: {
+                        padding: {
+                            left: 40,
+                            right: 100,
+                            top: 20
+                        }
+                    }
+                }
+            });
             $('#myChart2').show()
-            lineChart(ctx2);
+
         }
     });
-    $('#myChart2').show()
-    lineChart(ctx2);
+
 })
 
-function pieChart(ctx,place,total) {
-    //VISITORS EVERY LOCATION PER YEAR
-    //FOR PIE GRAPH
-    data = {
-        datasets: [{
-            data: total,
-            //FOR THE DATA YOU CAN PUT HERE THE NUMBER OF VISITORS IN ONE LOCATION I.E (40 Visitors in Cebu)
-        }],
-        // These labels appear in the legend and in the tooltips when hovering different arcs
-        // YOU CAN PUT THE PLACES HERE AS LABELS
-        labels: place
-    };
-
-    var chart = new Chart(ctx, {
-        type: 'pie',
-        data: data,
-        options: {
-            responsive: true,
-            plugins: {
-                colorschemes: {
-                    scheme: 'office.Solstice6'
-                }
-            },
-            legend: {
-                position: "bottom"
-            },
-            layout: {
-                padding: {
-                    left: 40,
-                    right: 40,
-                    top: 20
-                }
-            },
-        }
-    });
-}
-
-function lineChart(ctx2) {
-    //VISITORS OF A CERTAIN STUDENT PER YEAR
-    //FOR LINE CHART
-
-    var gradientStroke = ctx2.createLinearGradient(1200, 0, 100, 0);
-    gradientStroke.addColorStop(0, '#ff5757');
-    gradientStroke.addColorStop(1, '#578cff');
-
-    var myChart = new Chart(ctx2, {
-        type: 'line',
-        data: {
-            labels: ["1st Year", "2nd Year", "3rd Year", "4th Year"],
-            datasets: [{
-                label: "Chervin Tanilon",
-                borderColor: gradientStroke,
-                pointRadius: 0,
-                fill: true,
-
-                backgroundColor: gradientStroke,
-                borderWidth: 1,
-                data: [10, 5, 7, 2] //I CAN PUT HERE THE N VISITORS OF A CERTAIN STUDENT EVERY YEAR AS ELEMENT
-            }]
-        },
-        options: {
-            responsive: true,
-            legend: {
-                position: "bottom"
-            },
-            layout: {
-                padding: {
-                    left: 40,
-                    right: 100,
-                    top: 20
-                }
-            }
-        }
-    });
-}
 
 Chart.defaults.global.defaultFontFamily = "Comfortaa";
 Chart.defaults.global.defaultFontSize = 25;
