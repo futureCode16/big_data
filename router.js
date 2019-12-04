@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var app = express();
-var port = 8080;
+var port = 3000;
 var path = require('path');
 var bodyParser = require('body-parser');
 var http = require('http').Server(app);
@@ -19,7 +19,11 @@ app.use(express.static('public'));
 app.use(express.static('views'));
 
 app.get('/', function(req, res){
-    res.sendfile(path.join(__dirname, 'index.html'));
+    res.sendfile(path.join(__dirname, '/views/login.html'));
+  });
+
+  app.get('/login', function(req, res){
+    res.sendfile(path.join(__dirname, '/views/login.html'));
   });
 
 app.all('/statistics', function (req, res) {

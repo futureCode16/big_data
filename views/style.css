@@ -1,0 +1,36 @@
+
+body{
+    margin:0px;
+    background:gray;
+}
+.card {
+    margin-top: 10%;
+    width: 500px;
+    height: 520px;
+    border-radius: 20px;
+}
+
+.card-header {
+    height: 130px;
+    background: #E25822;
+    opacity: 0.8;
+}
+
+input:invalid {
+    outline: 0;
+    color: #ff2300;
+    border-color: #ff2300;
+}
+
+input:focus,
+input:valid {
+    border-color: #ffc117;
+
+}
+
+input:focus~label,
+input:valid~label {
+    font-size: 14px;
+    top: -24px;
+    color: #ffc117;
+}

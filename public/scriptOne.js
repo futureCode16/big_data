@@ -1,7 +1,7 @@
  $(document).ready(function () {
   
       let method = "GET";
-      let url = 'http://localhost:8080/retrieve-all';
+      let url = 'http://localhost:3000/retrieve-all';
       let data = "";
       apiRequest(url, data, method).then(res => {
         $("#table").show();
@@ -31,10 +31,9 @@
       });
   
     $(document).on('click', '#tabledelete', function () {
-  
       var a = $(this).closest('tr').attr('id');
       var b = $(this).closest('tr').attr('class');
-      let url = 'http://localhost:8080/delete/' + a;
+      let url = 'http://localhost:3000/delete/' + a;
       let data = { id: b };
       let method = 'PUT'
       apiRequest(url, data, method).then(res => {
@@ -55,7 +54,7 @@
         var updatedAge = $('#updateAge').val();
         var updatedGender = $('#updateSex option:selected').text()
         var updatedAddress = $('#updateAddress').val();
-        let url = 'http://localhost:8080/update/' + a;
+        let url = 'http://localhost:3000/update/' + a;
         let method = 'PUT'
         let data = { 'id': b, 'firstname': updatedFirstName, 'lastname': updatedLastName, 'age': updatedAge, 'gender': updatedGender, 'address': updatedAddress };
   

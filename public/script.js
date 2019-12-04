@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   var studentName;
   var studentData;
 
@@ -11,7 +10,7 @@ $(document).ready(function () {
       // console.log('checking')
 
       let method = 'GET'
-      let url = 'http://localhost:8080/checking';
+      let url = 'http://localhost:3000/checking';
       studentData = { firstname: studentName[1], lastname: studentName[0] };
       var check;
       apiRequest(url, studentData, method).then(res => {
@@ -61,7 +60,7 @@ $(document).ready(function () {
     var age = $('#Vage').val();
     var gender = $('#Vsex option:selected').text()
     var address = $('#Vaddress').val();
-    let requestUrl = 'http://localhost:8080/add';
+    let requestUrl = 'http://localhost:3000/add';
     let method = 'PUT'
     var visitors = { 'firstname': firstName, 'lastname': lastName, 'age': age, 'gender': gender, 'address': address, 'date': moment().format('MMMM Do YYYY, h:mm:ss a') };
 
