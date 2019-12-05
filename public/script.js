@@ -297,7 +297,7 @@ $(document).ready(function () {
     var address = $('#Vaddress').val();
     let requestUrl = 'http://localhost:8080/add';
     let method = 'PUT'
-    var visitors = { 'firstname': firstName, 'lastname': lastName, 'age': age, 'gender': gender, 'address': address, 'date': moment().format('MMMM Do YYYY, h:mm:ss a') };
+    var visitors = { 'firstname': firstName, 'lastname': lastName, 'age': age, 'gender': gender, 'address': address, 'date': moment().format('YYYY MMMM Do, h:mm:ss a') };
 
     // console.log(moment().format('MMMM Do YYYY, h:mm:ss a'))
 

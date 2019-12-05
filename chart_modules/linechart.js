@@ -33,7 +33,8 @@ module.exports = function(req, res) {
 
       var prev;
       for (var i = 0; i < result.length; i++) {
-        var sub = result[i]._id.substring(13, 17);
+        var sub = result[i]._id.substring(0,4);
+        console.log(sub)
         if (sub !== prev) {
           date.push(sub);
           total.push(1);
