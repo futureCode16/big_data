@@ -15,6 +15,7 @@ $(document).ready(function () {
   var studentName;
   var studentData;
   var listOfVisitors = [];
+  var vUpdateEdit = false;
 
   $("#go").click(function () {
     studentName = $('#name').val()
@@ -90,37 +91,36 @@ $(document).ready(function () {
           //
           $('<input>', {
             type: 'text',
-            id: 'foo',
             class: 'vListInfoUpdate',
             value: vListFname
           }).appendTo(vListFnameClear);
           $('<input>', {
             type: 'text',
-            id: 'foo',
             class: 'vListInfoUpdate',
             value: vListLname
           }).appendTo(vListLnameClear);
           $('<input>', {
             type: 'text',
-            id: 'foo',
             class: 'vListInfoUpdate',
             value: vListGender
           }).appendTo(vListGenderClear);
+          // let gender = $('<select>', {
+          //   class: 'vListInfoUpdate',
+          // }).appendTo(vListGenderClear);
+          // gender.append($("<option>").attr('value', "Male").text("Male"));
+          // gender.append($("<option>").attr('value', "Female").text("Female"));
           $('<input>', {
-            type: 'text',
-            id: 'foo',
+            type: 'number',
             class: 'vListInfoUpdate',
             value: vListAge
           }).appendTo(vListAgeClear);
           $('<input>', {
             type: 'text',
-            id: 'foo',
             class: 'vListInfoUpdate',
             value: vListAddress
           }).appendTo(vListAddressClear);
           $('<input>', {
             type: 'text',
-            id: 'foo',
             class: 'vListInfoUpdate',
             value: vListDate
           }).appendTo(vListDateClear);
@@ -152,9 +152,21 @@ $(document).ready(function () {
           /*add attribute to submit button represented by a check symbol*/
           //
           $(document).on('click', '.vListSubmitc', function () {
-            console.log('student id'+check._id)
+            console.log('student id' + check._id)
             let vUpdatedFname = vListFnameClear.children().eq(0).val();
             let vUpdatedLname = vListLnameClear.children().eq(0).val();
+            //   $('[name=options] option').filter(function() { 
+            //     return ($(this).text() == 'Blue'); //To select Blue
+            // }).prop('selected', true);
+            // let updatedGender = $(vListGenderClear).children().eq(0).children()
+            // for (var key in updatedGender) {
+            //   if (key === '0' || key === '1') {
+            //     if (updatedGender[key].selected) {
+            //       console.log(updatedGender[key].text)
+            //     }
+            //   }
+            // }
+            // console.log(updatedGender)
             let vUpdatedGender = vListGenderClear.children().eq(0).val();
             let vUpdatedAge = vListAgeClear.children().eq(0).val();
             let vUpdatedAddress = vListAddressClear.children().eq(0).val();
@@ -162,13 +174,13 @@ $(document).ready(function () {
             let visitorId = $(this).closest('tr').attr('id')
             let url = 'http://localhost:8080/update/' + check._id;
             let method = 'PUT'
-            let data = { '_id': visitorId, 'firstname': vUpdatedFname, 'lastname': vUpdatedLname, 'age': vUpdatedAge, 'gender': vUpdatedGender, 'address': vUpdatedAddress,'date':vUpdatedDate};
-            apiRequest(url,data,method).then(res =>{
+            let data = { '_id': visitorId, 'firstname': vUpdatedFname, 'lastname': vUpdatedLname, 'age': vUpdatedAge, 'gender': vUpdatedGender, 'address': vUpdatedAddress, 'date': vUpdatedDate };
+            apiRequest(url, data, method).then(res => {
               $('#vTableList').empty();
-              for(var i = 0;i < listOfVisitors[0].length; ++i){
+              for (var i = 0; i < listOfVisitors[0].length; ++i) {
                 // console.log(JSON.stringify(listOfVisitors[0][i]))
-                if(listOfVisitors[0][i]._id===res.data.body._id){
-                  listOfVisitors[0].splice(i,1);
+                if (listOfVisitors[0][i]._id === res.data.body._id) {
+                  listOfVisitors[0].splice(i, 1);
                   listOfVisitors[0].splice(i, 0, res.data.body);
                   // listOfVisitors[0].push(res.data.body)
                   // console.log(JSON.stringify(listOfVisitors[0]))
