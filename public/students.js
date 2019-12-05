@@ -62,6 +62,28 @@ $(document).ready(function() {
         var a = $(this).closest('tr').attr('id');
         var b = $(this).closest('tr').attr('class');
         $('#studentupdateModal').modal('show');
+
+        $('#studentupdateSave').click(function() {
+            var updatedFirstName = $('#studentupdateFirstName').val();
+            var updatedLastName = $('#studentupdateLastName').val();
+            var updatedAge = $('#studentupdateAge').val();
+            var updatedGender = $('#studentupdateSex option:selected').text()
+            var updatedAddress = $('#studentupdateAddress').val();
+            let url = 'http://localhost:8080/updateStudent/' + a;
+            let method = 'PUT'
+            let data = { 'id': b, 'firstname': updatedFirstName, 'lastname': updatedLastName, 'age': updatedAge, 'gender': updatedGender, 'address': updatedAddress };
+
+            apiRequest(url, data, method).then(res => {
+                // console.log(res)
+                row.eq(0).text(res.data.body.lastname)
+                row.eq(1).text(res.data.body.firstname)
+                row.eq(2).text(res.data.body.age)
+                row.eq(3).text(res.data.body.gender)
+                row.eq(4).text(res.data.body.address)
+            });
+
+        });
+
     })
 
     $(document).on('click', '#studentDelete', function() {
@@ -77,24 +99,4 @@ $(document).ready(function() {
         })
     });
 
-    $('#studentupdateSave').click(function() {
-        var updatedFirstName = $('#studentupdateFirstName').val();
-        var updatedLastName = $('#studentupdateLastName').val();
-        var updatedAge = $('#studentupdateAge').val();
-        var updatedGender = $('#studentupdateSex option:selected').text()
-        var updatedAddress = $('#studentupdateAddress').val();
-        let url = 'http://localhost:8080/updateStudent/' + a;
-        let method = 'PUT'
-        let data = { 'id': b, 'firstname': updatedFirstName, 'lastname': updatedLastName, 'age': updatedAge, 'gender': updatedGender, 'address': updatedAddress };
-
-        apiRequest(url, data, method).then(res => {
-            // console.log(res)
-            row.eq(0).text(res.data.body.lastname)
-            row.eq(1).text(res.data.body.firstname)
-            row.eq(2).text(res.data.body.age)
-            row.eq(3).text(res.data.body.gender)
-            row.eq(4).text(res.data.body.address)
-        });
-
-    });
 })
