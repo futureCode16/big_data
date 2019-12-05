@@ -54,7 +54,6 @@ app.put("/delete/:id", (req, res) => {
 
 app.get("/chart/location/:year", (req, res) => {
   console.log(req.params);
-  // res.send({key:"OKAY TAYO"})
   piechart(req.params.year, res);
 });
 

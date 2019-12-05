@@ -12,6 +12,10 @@ $(document).ready(function () {
     alert("test")
   })
 
+  $("#retrieveAll").click(function() {
+    window.location.href = "visitors.html";
+  })
+
   var studentName;
   var studentData;
   var listOfVisitors = [];
