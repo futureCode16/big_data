@@ -19,11 +19,11 @@ $("#chart1-btn").on("click", () => {
     // dataType: "jsonp",
     //   contentType: "application/json; charset=UTF-8",
     crossDomain: true,
-    success: function(data) {
+    success: function (data) {
       let place = [];
       let total = [];
       if (data.places.length == 0) {
-        place = ["Empty"];
+        place = ["No data"];
         total = [0.01];
       } else {
         place = data.places;
@@ -84,20 +84,24 @@ $("#chart2-btn").on("click", () => {
     // dataType: "jsonp",
     //   contentType: "application/json; charset=UTF-8",
     crossDomain: true,
-    success: function(data) {
+    success: function (data) {
       let date = [];
       let total = [];
       if (data.date.length == 0) {
         date = ["No data"];
         total = [0];
       } else {
-        date = data.date;
-        total = data.total;
+        if (data.date.length == 1) {
+          date = [data.date,data.date]
+          total = [data.total,data.total];
+        } else {
+          date = data.date;
+          total = data.total;
+        }
       }
 
       //VISITORS OF A CERTAIN STUDENT PER YEAR
       //FOR LINE CHART
-
       var gradientStroke = ctx2.createLinearGradient(1200, 0, 100, 0);
       gradientStroke.addColorStop(0, "#ff5757");
       gradientStroke.addColorStop(1, "#578cff");
