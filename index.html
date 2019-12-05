@@ -7,12 +7,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js" integrity="sha256-H9jAz//QLkDOy/nzE9G4aYijQtkLt9FvGmdUTwBk6gs="
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js" integrity="sha256-H9jAz//QLkDOy/nzE9G4aYijQtkLt9FvGmdUTwBk6gs=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a1813e4a30.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <!-- MAPS API -->
@@ -31,16 +29,15 @@
                     <span><b id="logoText" class="text-black">Visit</b></span>-->
                 </div>
                 <div class="col-md-6 d-flex justify-content-end">
-                        <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle btn-light" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Menu
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                  <button class="dropdown-item" type="button">Add Student</button>
-                                  <button class="dropdown-item" type="button">Display all students</button>
-                                </div>
-                              </div>
-                    <button id="logout" type="button" class="btn btn-light">LogOut</button>
+                    <button class="btn btn-secondary dropdown-toggle btn-light" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Menu
+                        </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" data-toggle="modal" data-target="#addModal" id="addStudent" type="button">Add Student</button>
+                        <button class="dropdown-item" id="display" type="button">Display all students</button>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="logout" type="button" class="btn btn-secondary btn-light">LogOut</button>
                 </div>
             </div>
         </div>
@@ -52,8 +49,7 @@
             </div>
             <div class="card-body">
                 <div class="search col-md-12">
-                    <input id="name" type="text" class="searchbtn form-control" placeholder="Search for...Lastname, Firstname"
-                        value="">
+                    <input id="name" type="text" class="searchbtn form-control" placeholder="Search for...Lastname, Firstname" value="">
                     <br>
                     <button id="go" class="btn btn-default" type="button">GO</button>
                     <br>
@@ -85,8 +81,7 @@
     </button> -->
 
     <!-- Modal -->
-    <div class="modal fade" id="VisitorLog" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
-        aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal fade" id="VisitorLog" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -97,8 +92,7 @@
                             </div>
                             <div id="school" class="col-md-9">
                                 <center>
-                                    <p>The Sisters of Mary School-Boystown,Inc.<br>
-                                        Tungkop, Minglanilla, Cebu
+                                    <p>The Sisters of Mary School-Boystown,Inc.<br> Tungkop, Minglanilla, Cebu
                                     </p>
                                 </center>
                             </div>
@@ -131,8 +125,8 @@
                                     <h6 class="studentInformationPadding">Address:</h6>
                                 </div>
                                 <div class="Sname col-md-12">
-                                    <h6 class="Nsize" id="sAddress">Zone-2 Bacuyangan, Hinoba-an Negros
-                                        Occidental</h6>
+                                    <h6 class="Nsize" id="sAddress">Zone-2 Bacuyangan, Hinoba-an Negros Occidental
+                                    </h6>
                                     <hr>
                                 </div>
                                 <div class="padding col-md-12">
@@ -246,57 +240,56 @@
         </div>
     </div>
 
-    <div class="modal fade center" id="addModal" class="modal hide" data-backdrop="static" data-keyboard="false">
+    <div class="modal fade center" id="addModal" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <b>
-                        <p id="modalName" class="modal-title">Name</p>
-                    </b>
+                    <h3>ADD STUDENT</h3>
                 </div>
                 <div class="modal-body">
-                    <div class="tab-content">
-                        <div id="home" class="container tab-pane active">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input id="firstName" type="text" class="form-control" placeholder="First Name"
-                                    aria-label="First Name" aria-describedby="basic-addon1" value="">
-                                <span>
-                                    <input id="lastName" type="text" class="form-control" placeholder="Last Name"
-                                        aria-label="Last Name" aria-describedby="basic-addon1" value="">
-                                </span>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="sex"><i class="fa fa-intersex"></i></label>
-                                </div>
-                                <select class="custom-select" id="sex">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                                <span>
-                                    <input id="age" type="number" class="form-control" placeholder="age" aria-label="age"
-                                        aria-describedby="basic-addon1">
-                                </span>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-home"></i></span>
-                                </div>
-                                <input id="Address" type="text" class="form-control" placeholder="Address" aria-label="Address"
-                                    aria-describedby="basic-addon1" value="">
-                            </div>
-                        </div>
+                    <hr>
+                    <div class=col-md-12>
+                        <p>Firstname:</p>
                     </div>
+                    <div class="col-md-12">
+                        <input id="studentFirstName" class="vInfo" type="text" placeholder="First Name">
+                    </div>
+                    <div class=col-md-12>
+                        <p>Lastname:</p>
+                    </div>
+                    <div class="col-md-12">
+                        <input id="studentLastName" class="vInfo" type="text" placeholder="Last Name">
+                    </div>
+                    <div class=col-md-12>
+                        <p>Age:</p>
+                    </div>
+                    <div class="col-md-12">
+                        <input id="studentAge" class="vInfo" type="Number" placeholder="Age">
+                    </div>
+                    <div class="col-md-12">
+                        <p for="sex">Gender:</p>
+                    </div>
+                    <div class="col-md-12">
+                        <select class="vInfo" id="studentSex">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                    </div>
+                    <div class=col-md-12>
+                        <p>Address:</p>
+                    </div>
+                    <div class="col-md-12">
+                        <input id="studentAddress" class="vInfo" type="text" placeholder="Address">
+                    </div>
+
                     <div class="modal-footer">
-                        <button id="save" type="button" class="btn btn-outline-success">save</button>
-                        <button id="close" type="button" class="btn btn-outline-danger" data-dismiss="modal">close</button>
+                        <button id="addNow" type="button" class="btn btn-outline-success">Add</button>
+                        <button id="studentClose" type="button" class="btn btn-outline-danger" data-dismiss="modal">close</button>
                     </div>
                 </div>
             </div>
         </div>
+
         <script src="script.js"></script>
 </body>
 
