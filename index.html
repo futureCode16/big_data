@@ -64,7 +64,7 @@
                                         id="visitorsCount">0</span> </p> -->
                             </div>
                             <button id="retrieveAll" type="button" class="btn btn-outline-success btn-lg btn-block">Retrieve
-                                All</button>
+                                    All</button>
                         </div>
                     </div>
                 </div>
@@ -239,85 +239,6 @@
         </div>
     </div>
 
-
-    <div id="table" class="container-fluid">
-        <div id="card" class="card overflow-auto" style="width:100%;height:500px;">
-            <div class="card-body">
-                <div class="col-md-12">
-                    <div class="row">
-                        <table id="vRVisitors" class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Student Name</th>
-                                    <th scope="col">Last Name</th>
-                                    <th scope="col">First Name</th>
-                                    <th scope="col">Age</th>
-                                    <th scope="col">Gender</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Update</th>
-                                    <th scope="col">Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <br>
-    <div class="modal fade center hide" id="updateModal" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>UPDATE INFORMATION</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="tab-content">
-                        <div id="home" class="container tab-pane active">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input id="updateFirstName" type="text" class="form-control" placeholder="First Name"
-                                    aria-label="First Name" aria-describedby="basic-addon1" value="">
-                                <span>
-                                    <input id="updateLastName" type="text" class="form-control" placeholder="Last Name"
-                                        aria-label="Last Name" aria-describedby="basic-addon1" value="">
-                                </span>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="sex"><i class="fa fa-intersex"></i></label>
-                                </div>
-                                <select class="custom-select" id="updateSex">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                                <span>
-                                    <input id="updateAge" type="number" class="form-control" placeholder="age"
-                                        aria-label="age" aria-describedby="basic-addon1">
-                                </span>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-home"></i></span>
-                                </div>
-                                <input id="updateAddress" type="text" class="form-control" placeholder="Address"
-                                    aria-label="Address" aria-describedby="basic-addon1" value="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="updateSave" type="button" class="btn btn-outline-success">save</button>
-                    <button id="updateClose" type="button" class="btn btn-outline-danger" data-dismiss="modal">close</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="modal fade center" id="addModal" class="modal hide" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
