@@ -24,47 +24,48 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.static("views"));
 
-app.get("/dashboard", function(req, res) {
+app.get("/dashboard", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
+
 });
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "/views/login.html"));
 });
 
-app.all("/index.html", function(req, res) {
+app.all("/index.html", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/checking", function(req, res) {
+app.get("/checking", function (req, res) {
     check(req.query, res);
 });
 
-app.put("/add", function(req, res) {
+app.put("/add", function (req, res) {
     add(req.body.student, req.body.visitor, res);
 });
 
-app.post("/addStudent", function(req, res) {
+app.post("/addStudent", function (req, res) {
     addStudent(req.body, res);
 });
 
-app.put("/update/:id", function(req, res) {
+app.put("/update/:id", function (req, res) {
     update(req.params.id, req.body, res);
 });
 
-app.put("/updateStudent/:id", function(req, res) {
+app.put("/updateStudent/:id", function (req, res) {
     updateStudent(req.params.id, req.body, res);
 });
 
-app.put("/deleteStudent/:id", function(req, res) {
+app.put("/deleteStudent/:id", function (req, res) {
     DeleteStudent(req.params.id, res);
 });
 
-app.get("/retrieve-all", function(req, res) {
+app.get("/retrieve-all", function (req, res) {
     retrieveAll(req, res);
 });
 
-app.get("/retrieve-all-student", function(req, res) {
+app.get("/retrieve-all-student", function (req, res) {
     retrieveAllStudent(req, res);
 });
 
@@ -81,10 +82,10 @@ app.get("/chart/perStudent/:firstname/:lastname", (req, res) => {
     linechart(req, res);
 });
 
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "./views/404.html"));
 });
 
-http.listen(port, function() {
+http.listen(port, function () {
     console.log("listening to port: " + port);
 });
