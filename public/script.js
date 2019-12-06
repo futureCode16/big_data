@@ -5,14 +5,14 @@ var placesAutocomplete = places({
 
 
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     $("#address-input").change(() => {
         $("#address-input").prop('disabled', true);
         alert("test")
     })
 
-    $("#retrieveAll").click(function() {
+    $("#retrieveAll").click(function () {
         window.location.href = "visitors.html";
     })
 
@@ -20,7 +20,7 @@ $(document).ready(function() {
     var studentData;
     var listOfVisitors = [];
 
-    $("#go").click(function() {
+    $("#go").click(function () {
         studentName = $('#name').val()
         if (studentName !== "") {
             studentName = studentName.toLowerCase().split(',');
@@ -57,7 +57,7 @@ $(document).ready(function() {
                     });
                 }
                 //add attribute to delete visitor info per student
-                $(document).on('click', '#vListDelete', function() {
+                $(document).on('click', '#vListDelete', function () {
                     let a = check._id;
                     let b = $(this).closest('tr').attr('id');
                     let url = 'http://localhost:8080/delete/' + a;
@@ -72,7 +72,7 @@ $(document).ready(function() {
                 //
                 //add attribute to Update visitor info per student
                 //
-                $(document).on('click', '#vListEdit', function() {
+                $(document).on('click', '#vListEdit', function () {
                     //
                     /*select all visitor's information*/
                     //
@@ -138,7 +138,7 @@ $(document).ready(function() {
                     //
                     /* add attribute to cancel button represented by x */
                     //
-                    $(document).on('click', '.vListSubmitCancelx', function() {
+                    $(document).on('click', '.vListSubmitCancelx', function () {
                         //
                         /*this field just bring back the previous value of the visitor's info*/
                         //
@@ -154,7 +154,7 @@ $(document).ready(function() {
                     //
                     /*add attribute to submit button represented by a check symbol*/
                     //
-                    $(document).on('click', '.vListSubmitc', function() {
+                    $(document).on('click', '.vListSubmitc', function () {
                         console.log('student id' + check._id)
                         let vUpdatedFname = vListFnameClear.children().eq(0).val();
                         let vUpdatedLname = vListLnameClear.children().eq(0).val();
@@ -179,20 +179,20 @@ $(document).ready(function() {
                         let method = 'PUT'
                         let data = { '_id': visitorId, 'firstname': vUpdatedFname, 'lastname': vUpdatedLname, 'age': vUpdatedAge, 'gender': vUpdatedGender, 'address': vUpdatedAddress, 'date': vUpdatedDate };
                         apiRequest(url, data, method).then(res => {
-                                $('#vTableList').empty();
-                                for (var i = 0; i < listOfVisitors[0].length; ++i) {
-                                    // console.log(JSON.stringify(listOfVisitors[0][i]))
-                                    if (listOfVisitors[0][i]._id === res.data.body._id) {
-                                        listOfVisitors[0].splice(i, 1);
-                                        listOfVisitors[0].splice(i, 0, res.data.body);
-                                        // listOfVisitors[0].push(res.data.body)
-                                        // console.log(JSON.stringify(listOfVisitors[0]))
-                                    }
+                            $('#vTableList').empty();
+                            for (var i = 0; i < listOfVisitors[0].length; ++i) {
+                                // console.log(JSON.stringify(listOfVisitors[0][i]))
+                                if (listOfVisitors[0][i]._id === res.data.body._id) {
+                                    listOfVisitors[0].splice(i, 1);
+                                    listOfVisitors[0].splice(i, 0, res.data.body);
+                                    // listOfVisitors[0].push(res.data.body)
+                                    // console.log(JSON.stringify(listOfVisitors[0]))
                                 }
-                                showVisitors();
-                                // console.log(res)
-                            })
-                            // console.log($(this).closest('tr').attr('id'))
+                            }
+                            showVisitors();
+                            // console.log(res)
+                        })
+                        // console.log($(this).closest('tr').attr('id'))
                     });
                 })
             });
@@ -200,7 +200,7 @@ $(document).ready(function() {
     });
 
     //clear the input fields upon closing the modal
-    $('#vClose').click(function() {
+    $('#vClose').click(function () {
         student = {};
         studentName = "";
         $('#name').val("");
@@ -211,7 +211,7 @@ $(document).ready(function() {
     })
 
     //retrieve all visitors
-    $('#retrieveAll').click(function() {
+    $('#retrieveAll').click(function () {
         let method = "GET";
         let url = 'http://localhost:8080/retrieve-all';
         let data = "";
@@ -248,7 +248,7 @@ $(document).ready(function() {
         //end of retrieving all visitors
     })
 
-    $(document).on('click', '#tabledelete', function() {
+    $(document).on('click', '#tabledelete', function () {
 
         var a = $(this).closest('tr').attr('id');
         var b = $(this).closest('tr').attr('class');
@@ -262,14 +262,14 @@ $(document).ready(function() {
         })
     });
 
-    $(document).on('click', '#tableUpdate', function() {
+    $(document).on('click', '#tableUpdate', function () {
         var row = $(this).closest('tr').children()
 
         var a = $(this).closest('tr').attr('id');
         var b = $(this).closest('tr').attr('class');
         $('#updateModal').modal('show');
 
-        $('#updateSave').click(function() {
+        $('#updateSave').click(function () {
             var updatedFirstName = $('#updateFirstName').val();
             var updatedLastName = $('#updateLastName').val();
             var updatedAge = $('#updateAge').val();
@@ -292,7 +292,7 @@ $(document).ready(function() {
 
     })
 
-    $('#vSubmit').on('click', function() {
+    $('#vSubmit').on('click', function () {
         var firstName = $('#Vfname').val();
         var lastName = $('#Vlname').val();
         var age = Number($('#Vage').val());
@@ -325,7 +325,7 @@ $(document).ready(function() {
     })
 
     function showVisitors() {
-        listOfVisitors[0].forEach(function(item) {
+        listOfVisitors[0].forEach(function (item) {
             let div = "<tr id=" + item._id + "><td><div class='col-md-12'>" +
                 "<div class='visitorList col-md-12 d-flex justify-content-end'>" +
                 "<i id='vListEdit' class='fas fa-pencil-alt'></i><i id=vListDelete class='far fa-trash-alt'></i></div>" +
@@ -346,17 +346,17 @@ $(document).ready(function() {
                 url: apiurl,
                 data: apidata,
                 type: method,
-                success: function(result) {
+                success: function (result) {
                     resolve(result)
                 },
-                error: function(error) {
+                error: function (error) {
                     reject(error)
                 }
             });
         })
     }
 
-    $("#addNow").click(function() {
+    $("#addNow").click(function () {
         var firstName = $('#studentFirstName').val();
         var lastName = $('#studentLastName').val();
         var age = Number($('#studentAge').val());
@@ -375,24 +375,24 @@ $(document).ready(function() {
         };
 
         if (firstName !== "" && lastName !== "" && age !== 0 && address !== "") {
-            apiRequest(requestUrl, student, method).then(res => {
-                    swal({
-                        icon: "success",
-                        text: "Student has been added!"
-                    });
-                    $('#studentFirstname').val("");
-                    $('#studentLastname').val("");
-                    $('#studentAge').val("");
-                    $('#studentAddress').val("");
+            apiRequest(requestUrl, student, method).then(res =>
+                swal({
+                    icon: "success",
+                    text: "Student has been added!"
                 })
+            )
                 .catch(error => console.log(error))
         } else {
             $('.alert').fadeIn();
             $('.alert').fadeOut(3000);
         }
+        $('#studentFirstName').val("");
+        $('#studentLastName').val("");
+        $('#studentAge').val("");
+        $('#studentAddress').val("");
     })
 
-    $("#display").click(function() {
+    $("#display").click(function () {
         let method = "GET";
         let url = 'http://localhost:8080/retrieve-all-student';
         let data = "";

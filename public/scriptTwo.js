@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $("#login").click(function(){
-    if ($("#username").val() == "Lalaine" && $("#password").val() == "pass") {
+    if ($("#username").val() == "admin" && $("#password").val() == "admin") {
       apiRequest("http://localhost:8080/dashboard","GET").then(res =>{
         window.location.href = "./dashboard";
        })

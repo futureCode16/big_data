@@ -58,7 +58,15 @@ $(document).ready(function() {
     });
 
     $(document).on('click', '#studentUpdate', function() {
+        
         var row = $(this).closest('tr').children()
+
+        $('#studentupdateFirstName').val(row.eq(0).text());
+        $('#studentupdateLastName').val(row.eq(1).text());
+        $('#studentupdateAge').val(row.eq(2).text());
+        $('#studentupdateSex option:selected').text(row.eq(3).text())
+        $('#studentupdateAddress').val(row.eq(4).text());
+
         var a = $(this).closest('tr').attr('id');
         var b = $(this).closest('tr').attr('class');
         $('#studentupdateModal').modal('show');

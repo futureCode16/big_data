@@ -92,8 +92,8 @@ $("#chart2-btn").on("click", () => {
         total = [0];
       } else {
         if (data.date.length == 1) {
-          date = [data.date,data.date]
-          total = [data.total,data.total];
+          date = [data.date, data.date]
+          total = [data.total, data.total];
         } else {
           date = data.date;
           total = data.total;
@@ -126,6 +126,14 @@ $("#chart2-btn").on("click", () => {
           ]
         },
         options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                callback: function (value) { if (value % 1 === 0) { return value; } }
+              }
+            }]
+          },
           responsive: true,
           legend: {
             position: "bottom"

@@ -52,6 +52,12 @@ $(document).ready(function() {
     $(document).on('click', '#tableUpdate', function() {
         var row = $(this).closest('tr').children()
 
+        $('#updateFirstName').val(row.eq(1).text());
+        $('#updateLastName').val(row.eq(2).text());
+        $('#updateAge').val(row.eq(3).text());
+        $('#updateSex option:selected').text(row.eq(4).text())
+        $('#updateAddress').val(row.eq(5).text());
+
         var a = $(this).closest('tr').attr('id');
         var b = $(this).closest('tr').attr('class');
         $('#updateModal').modal('show');
