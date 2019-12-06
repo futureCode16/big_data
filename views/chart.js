@@ -7,6 +7,7 @@ var input = document.getElementById("input");
 var content = [];
 $("#myChart").hide();
 $("#myChart2").hide();
+$('#overall').parent().hide();
 var barChart = null;
 var lineChart = null;
 $("#chart1-btn").on("click", () => {
@@ -24,11 +25,15 @@ $("#chart1-btn").on("click", () => {
       let total = [];
       if (data.places.length == 0) {
         place = ["No data"];
-        total = [0.01];
+        total = [0];
       } else {
         place = data.places;
         total = data.total;
       }
+
+      var overall = total.reduce((a, b) => a + b, 0)
+      $('#overall').text(overall)
+      $('#overall').parent().show()
 
       if (barChart) barChart.destroy();
       //VISITORS EVERY LOCATION PER YEAR
@@ -92,14 +97,14 @@ $("#chart2-btn").on("click", () => {
         total = [0];
       } else {
         if (data.date.length == 1) {
-          date = [data.date, data.date]
+          date = ["", data.date]
           total = [data.total, data.total];
         } else {
           date = data.date;
           total = data.total;
         }
       }
-
+      
       //VISITORS OF A CERTAIN STUDENT PER YEAR
       //FOR LINE CHART
       var gradientStroke = ctx2.createLinearGradient(1200, 0, 100, 0);

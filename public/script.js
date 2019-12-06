@@ -19,6 +19,7 @@ $(document).ready(function () {
     var studentName;
     var studentData;
     var listOfVisitors = [];
+    var vListUpdate = false;
 
     $("#go").click(function () {
         studentName = $('#name').val()
@@ -73,127 +74,132 @@ $(document).ready(function () {
                 //add attribute to Update visitor info per student
                 //
                 $(document).on('click', '#vListEdit', function () {
-                    //
-                    /*select all visitor's information*/
-                    //
-                    let vListFname = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(1).children().eq(1).text();
-                    console.log(vListFname)
-                    let vListLname = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(2).children().eq(1).text();
-                    let vListGender = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(3).children().eq(1).text();
-                    let vListAge = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(4).children().eq(1).text();
-                    let vListAddress = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(5).children().eq(1).text();
-                    let vListDate = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(6).children().eq(1).text();
-                    let vListFnameClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(1).children().eq(1).text("");
-                    let vListLnameClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(2).children().eq(1).text("");
-                    let vListGenderClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(3).children().eq(1).text("");
-                    let vListAgeClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(4).children().eq(1).text("");
-                    let vListAddressClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(5).children().eq(1).text("");
-                    let vListDateClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(6).children().eq(1).text("");
-                    //
-                    /*show all input Field*/
-                    //
-                    $('<input>', {
-                        type: 'text',
-                        class: 'vListInfoUpdate',
-                        value: vListFname
-                    }).appendTo(vListFnameClear);
-                    $('<input>', {
-                        type: 'text',
-                        class: 'vListInfoUpdate',
-                        value: vListLname
-                    }).appendTo(vListLnameClear);
-                    $('<input>', {
-                        type: 'text',
-                        class: 'vListInfoUpdate',
-                        value: vListGender
-                    }).appendTo(vListGenderClear);
-                    // let gender = $('<select>', {
-                    //   class: 'vListInfoUpdate',
-                    // }).appendTo(vListGenderClear);
-                    // gender.append($("<option>").attr('value', "Male").text("Male"));
-                    // gender.append($("<option>").attr('value', "Female").text("Female"));
-                    $('<input>', {
-                        type: 'number',
-                        class: 'vListInfoUpdate',
-                        value: vListAge
-                    }).appendTo(vListAgeClear);
-                    $('<input>', {
-                        type: 'text',
-                        class: 'vListInfoUpdate',
-                        value: vListAddress
-                    }).appendTo(vListAddressClear);
-                    $('<input>', {
-                        type: 'text',
-                        class: 'vListInfoUpdate',
-                        value: vListDate
-                    }).appendTo(vListDateClear);
-                    /*end of showing input Field*/
-                    //
-                    /*show submit and cancel button represented by x and a check*/
-                    let vListSubmitCancel = "<div class='visitorList col-md-12 d-flex justify-content-end'>" +
-                        "<i class='vListSubmitc far fa-check-circle'></i><i class='vListSubmitCancelx far fa-times-circle'></i></div>"
-                    $(this).closest('tr').children().eq(0).children().append(vListSubmitCancel);
-                    /*end of showing x and a check*/
-                    //
-                    //
-                    /* add attribute to cancel button represented by x */
-                    //
-                    $(document).on('click', '.vListSubmitCancelx', function () {
+                    if (!vListUpdate) {
+                        vListUpdate = true;
                         //
-                        /*this field just bring back the previous value of the visitor's info*/
+                        /*select all visitor's information*/
                         //
-                        vListFnameClear.html(vListFname)
-                        vListLnameClear.html(vListLname)
-                        vListGenderClear.html(vListGender)
-                        vListAgeClear.html(vListAge)
-                        vListAddressClear.html(vListAddress)
-                        vListDateClear.html(vListDate)
-                        $(this).closest('tr').children().eq(0).children().eq(0).children().eq(7).remove() //remove the submit and cancel button
-                    });
-                    //
-                    //
-                    /*add attribute to submit button represented by a check symbol*/
-                    //
-                    $(document).on('click', '.vListSubmitc', function () {
-                        console.log('student id' + check._id)
-                        let vUpdatedFname = vListFnameClear.children().eq(0).val();
-                        let vUpdatedLname = vListLnameClear.children().eq(0).val();
-                        //   $('[name=options] option').filter(function() { 
-                        //     return ($(this).text() == 'Blue'); //To select Blue
-                        // }).prop('selected', true);
-                        // let updatedGender = $(vListGenderClear).children().eq(0).children()
-                        // for (var key in updatedGender) {
-                        //   if (key === '0' || key === '1') {
-                        //     if (updatedGender[key].selected) {
-                        //       console.log(updatedGender[key].text)
-                        //     }
-                        //   }
-                        // }
-                        // console.log(updatedGender)
-                        let vUpdatedGender = vListGenderClear.children().eq(0).val();
-                        let vUpdatedAge = vListAgeClear.children().eq(0).val();
-                        let vUpdatedAddress = vListAddressClear.children().eq(0).val();
-                        let vUpdatedDate = vListDateClear.children().eq(0).val();
-                        let visitorId = $(this).closest('tr').attr('id')
-                        let url = 'http://localhost:8080/update/' + check._id;
-                        let method = 'PUT'
-                        let data = { '_id': visitorId, 'firstname': vUpdatedFname, 'lastname': vUpdatedLname, 'age': vUpdatedAge, 'gender': vUpdatedGender, 'address': vUpdatedAddress, 'date': vUpdatedDate };
-                        apiRequest(url, data, method).then(res => {
-                            $('#vTableList').empty();
-                            for (var i = 0; i < listOfVisitors[0].length; ++i) {
-                                // console.log(JSON.stringify(listOfVisitors[0][i]))
-                                if (listOfVisitors[0][i]._id === res.data.body._id) {
-                                    listOfVisitors[0].splice(i, 1);
-                                    listOfVisitors[0].splice(i, 0, res.data.body);
-                                    // listOfVisitors[0].push(res.data.body)
-                                    // console.log(JSON.stringify(listOfVisitors[0]))
+                        let vListFname = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(1).children().eq(1).text();
+                        console.log(vListFname)
+                        let vListLname = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(2).children().eq(1).text();
+                        let vListGender = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(3).children().eq(1).text();
+                        let vListAge = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(4).children().eq(1).text();
+                        let vListAddress = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(5).children().eq(1).text();
+                        let vListDate = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(6).children().eq(1).text();
+                        let vListFnameClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(1).children().eq(1).text("");
+                        let vListLnameClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(2).children().eq(1).text("");
+                        let vListGenderClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(3).children().eq(1).text("");
+                        let vListAgeClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(4).children().eq(1).text("");
+                        let vListAddressClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(5).children().eq(1).text("");
+                        let vListDateClear = $(this).closest('tr').children().eq(0).children().eq(0).children().eq(6).children().eq(1).text("");
+                        //
+                        /*show all input Field*/
+                        //
+                        $('<input>', {
+                            type: 'text',
+                            class: 'vListInfoUpdate',
+                            value: vListFname
+                        }).appendTo(vListFnameClear);
+                        $('<input>', {
+                            type: 'text',
+                            class: 'vListInfoUpdate',
+                            value: vListLname
+                        }).appendTo(vListLnameClear);
+                        $('<input>', {
+                            type: 'text',
+                            class: 'vListInfoUpdate',
+                            value: vListGender
+                        }).appendTo(vListGenderClear);
+                        // let gender = $('<select>', {
+                        //   class: 'vListInfoUpdate',
+                        // }).appendTo(vListGenderClear);
+                        // gender.append($("<option>").attr('value', "Male").text("Male"));
+                        // gender.append($("<option>").attr('value', "Female").text("Female"));
+                        $('<input>', {
+                            type: 'number',
+                            class: 'vListInfoUpdate',
+                            value: vListAge
+                        }).appendTo(vListAgeClear);
+                        $('<input>', {
+                            type: 'text',
+                            class: 'vListInfoUpdate',
+                            value: vListAddress
+                        }).appendTo(vListAddressClear);
+                        $('<input>', {
+                            type: 'text',
+                            class: 'vListInfoUpdate',
+                            value: vListDate
+                        }).appendTo(vListDateClear);
+                        /*end of showing input Field*/
+                        //
+                        /*show submit and cancel button represented by x and a check*/
+                        let vListSubmitCancel = "<div class='visitorList col-md-12 d-flex justify-content-end'>" +
+                            "<i class='vListSubmitc far fa-check-circle'></i><i class='vListSubmitCancelx far fa-times-circle'></i></div>"
+                        $(this).closest('tr').children().eq(0).children().append(vListSubmitCancel);
+                        /*end of showing x and a check*/
+                        //
+                        //
+                        /* add attribute to cancel button represented by x */
+                        //
+                        $(document).on('click', '.vListSubmitCancelx', function () {
+                            //
+                            /*this field just bring back the previous value of the visitor's info*/
+                            //
+                            vListUpdate = false;
+                            vListFnameClear.html(vListFname)
+                            vListLnameClear.html(vListLname)
+                            vListGenderClear.html(vListGender)
+                            vListAgeClear.html(vListAge)
+                            vListAddressClear.html(vListAddress)
+                            vListDateClear.html(vListDate)
+                            $(this).closest('tr').children().eq(0).children().eq(0).children().eq(7).remove() //remove the submit and cancel button
+                        });
+                        //
+                        //
+                        /*add attribute to submit button represented by a check symbol*/
+                        //
+                        $(document).on('click', '.vListSubmitc', function () {
+                            console.log('student id' + check._id)
+                            vListUpdate = false;
+                            let vUpdatedFname = vListFnameClear.children().eq(0).val();
+                            let vUpdatedLname = vListLnameClear.children().eq(0).val();
+                            //   $('[name=options] option').filter(function() { 
+                            //     return ($(this).text() == 'Blue'); //To select Blue
+                            // }).prop('selected', true);
+                            // let updatedGender = $(vListGenderClear).children().eq(0).children()
+                            // for (var key in updatedGender) {
+                            //   if (key === '0' || key === '1') {
+                            //     if (updatedGender[key].selected) {
+                            //       console.log(updatedGender[key].text)
+                            //     }
+                            //   }
+                            // }
+                            // console.log(updatedGender)
+                            let vUpdatedGender = vListGenderClear.children().eq(0).val();
+                            let vUpdatedAge = vListAgeClear.children().eq(0).val();
+                            let vUpdatedAddress = vListAddressClear.children().eq(0).val();
+                            let vUpdatedDate = vListDateClear.children().eq(0).val();
+                            let visitorId = $(this).closest('tr').attr('id')
+                            let url = 'http://localhost:8080/update/' + check._id;
+                            let method = 'PUT'
+                            let data = { '_id': visitorId, 'firstname': vUpdatedFname, 'lastname': vUpdatedLname, 'age': vUpdatedAge, 'gender': vUpdatedGender, 'address': vUpdatedAddress, 'date': vUpdatedDate };
+                            apiRequest(url, data, method).then(res => {
+                                $('#vTableList').empty();
+                                for (var i = 0; i < listOfVisitors[0].length; ++i) {
+                                    // console.log(JSON.stringify(listOfVisitors[0][i]))
+                                    if (listOfVisitors[0][i]._id === res.data.body._id) {
+                                        listOfVisitors[0].splice(i, 1);
+                                        listOfVisitors[0].splice(i, 0, res.data.body);
+                                        // listOfVisitors[0].push(res.data.body)
+                                        // console.log(JSON.stringify(listOfVisitors[0]))
+                                    }
                                 }
-                            }
-                            showVisitors();
-                            // console.log(res)
-                        })
-                        // console.log($(this).closest('tr').attr('id'))
-                    });
+                                showVisitors();
+                                // console.log(res)
+                            })
+                            // console.log($(this).closest('tr').attr('id'))
+                        });
+                    }
                 })
             });
         }

@@ -49,6 +49,7 @@
             </div>
             <div class="card-body">
                 <div class="search col-md-12">
+                    <center><p>Search for a student</p></center>
                     <input id="name" type="text" class="searchbtn form-control" placeholder="Search for...Lastname, Firstname" value="">
                     <br>
                     <button id="go" class="btn btn-default" type="button">GO</button>
@@ -67,7 +68,7 @@
                                         id="visitorsCount">0</span> </p> -->
                             </div>
                             <button id="retrieveAll" type="button" class="btn btn-outline-success btn-lg btn-block">Retrieve
-                                All</button>
+                                All Visitors</button>
                         </div>
                     </div>
                 </div>
@@ -211,9 +212,10 @@
                     </div>
                     <div class="col-md-12 border-bottom">
                         <div class="row">
-                            <div id="vSearchbar" class="col-md-12 d-flex justify-content-end">
-                                <input id="vSearch" class="vInfo" type="text" placeholder="Search">
-                                <i id="vSearchIcon" class="fas fa-search"></i>
+                            <div id="vSearchbar" class="col-md-12 d-flex justify-content-center">
+                                <h6 style="margin-top:17px;color:white">Visitors</h6>
+                                <!-- <input id="vSearch" class="vInfo" type="text" placeholder="Search">
+                                <i id="vSearchIcon" class="fas fa-search"></i> -->
                             </div>
                             <div id="vList" class="col-md-12 overflow-auto">
                                 <table class="table table-hover">
@@ -234,7 +236,7 @@
                     </center>
                 </div>
                 <div class="modal-footer">
-                    <button id="vClose" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="vClose" type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.reload()">Close</button>
                 </div>
             </div>
         </div>
