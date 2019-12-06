@@ -1,76 +1,114 @@
-body{
-    height:100%;
-    margin:0;
+body {
+    height: 100%;
+    margin: 0;
     font-family: "Comfortaa";
 }
-#header{
+
+#header {
     height: 400px;
     background: white;
     background-image: url('famday.jpg');
     background-position: center;
     background-repeat: no-repeat;
-    z-index:1;
-    padding:0;
+    z-index: 1;
+    padding: 0;
 }
-#inputField{
-    width:400px;
+
+#inputField {
+    width: 400px;
 }
-#name{
-    width:400px;
+
+#name {
+    width: 400px;
 }
-.search{
-    margin-top:20%;
+
+.search {
+    margin-top: 20%;
 }
-.searchbtn{
+
+.searchbtn {
     height: 50px;
 }
-#go{
-    padding-top:2px;
-    height:30px; 
+
+#dropdownMenu2 {
+    border-radius: 70px;
+    height: 70%;
+    padding-top: 5px;
+    border-top-width: 1px;
+    margin-top: 8px;
 }
-.page-header{
-    background:black;
-    height:200px;
+
+#go {
+    padding-top: 2px;
+    height: 30px;
+    margin-top: 20%;
 }
-.card{
-    margin-top:-30px;
-    z-index:2;
-    width:500px;
+
+.page-header {
+    background: black;
+    height: 200px;
 }
-.card-header{
-    height:150px;
-    background:#0073bf;
+
+.card {
+    margin-top: -30px;
+    z-index: 2;
+    width: 500px;
 }
-.btn-default, #close, #save, #updateClose, #updateSave{
-    border:2px solid #fa05ef;
-    border-radius:15px;
-    width:150px;
-    padding:0;
+
+.card-header {
+    height: 150px;
+    background: #0073bf;
+}
+
+.btn-default,
+#close,
+#save,
+#updateClose,
+#updateSave {
+    border: 2px solid #fa05ef;
+    border-radius: 15px;
+    width: 150px;
+    padding: 0;
     font-weight: bold;
 }
-#close, #updateClose, #updateSave{
-    border:1px solid red;
-    width:100px;
+
+#close,
+#updateClose,
+#updateSave {
+    border: 1px solid red;
+    width: 100px;
 }
-#save,#updateSave{
-    border:1px solid green;
-    width:100px;
+
+#save,
+#updateSave {
+    border: 1px solid green;
+    width: 100px;
 }
-#event{
-    background:#0073bf;
+
+#event {
+    background: #0073bf;
 }
-.updateDelete{  
-    width:100px;
+
+.updateDelete {
+    width: 100px;
     height: 30px;
-    padding:0;
+    padding: 0;
 }
-#navs{
-    height:60px;
-    padding:5px;
+
+#navs {
+    height: 60px;
+    padding: 5px;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
 }
+
+th {
+    position: sticky;
+    top: 0;
+}
+
+
 /* #logo{
     font-size: 30px;
     padding:10px;
@@ -85,263 +123,304 @@ body{
     margin-left: -10px;
     padding-right:10px;
 } */
-#logo{
-    height:50px;
-    width:220px;
-    border-radius:10px;
-    padding-bottom:3px;
+
+#logo {
+    height: 50px;
+    width: 220px;
+    border-radius: 10px;
+    padding-bottom: 3px;
 }
-#check{
+
+#check {
     font-size: 100px;
-    padding:10px;
+    padding: 10px;
 }
-#table{
-    display:none;
-    width:90%;
-    height:500px;
-    padding:20px;
-    margin-top:200px;
+
+#table {
+    display: none;
+    width: 90%;
+    height: 500px;
+    padding: 20px;
+    margin-top: 200px;
 }
+
 .overflow-auto {
     min-height: 50px;
-  }
+}
 
-  #card::-webkit-scrollbar-track {
+#card::-webkit-scrollbar-track {
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.1);
     border: 1px solid #ccc;
-  }
+}
 
-  #card::-webkit-scrollbar-thumb {
+#card::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: linear-gradient(left, #fff, #e4e4e4);
     border: 1px solid #aaa;
-  }
+}
 
-  #card::-webkit-scrollbar-thumb:hover {
+#card::-webkit-scrollbar-thumb:hover {
     background: #fff;
-  }
+}
 
-  #card::-webkit-scrollbar-thumb:active {
+#card::-webkit-scrollbar-thumb:active {
     background: linear-gradient(left, #22ADD4, #1E98BA);
-  }
+}
 
-  #card::-webkit-scrollbar {
+#card::-webkit-scrollbar {
     width: 10px;
     background-color: #F5F5F5;
-  }
+}
 
-  /* start here for modal */
 
-  #school{
-      padding-top:20px;
-      padding-right:20px;
-      font-weight: bold;
-  }
-  #profile{
-      height: 220px;
-      width: 180px;
-  }
-  .Sname{
-    padding-left:70px;
-  }
-  .padding{
-      padding:0px;
-      margin-bottom:0px;
-  }
-  .studentInformationPadding{
-    padding-left:30px;
-  }
-  .Nsize{
-      font-size: 13px;
-      margin-bottom:0px;
-  }
-  .test{
-      background:gray
-  }
-  #address{
-      margin:0px;
-  }
-  .visitorsInfo{
-    background:white;
-    height:625px;
+/* start here for modal */
+
+#school {
+    padding-top: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+}
+
+#profile {
+    height: 220px;
+    width: 180px;
+}
+
+.Sname {
+    padding-left: 70px;
+}
+
+.padding {
+    padding: 0px;
+    margin-bottom: 0px;
+}
+
+.studentInformationPadding {
+    padding-left: 30px;
+}
+
+.Nsize {
+    font-size: 13px;
+    margin-bottom: 0px;
+}
+
+.test {
+    background: gray
+}
+
+#address {
+    margin: 0px;
+}
+
+.visitorsInfo {
+    background: white;
+    height: 625px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    border-top:2px solid #ededed;
-    border-bottom:2px solid #ededed;
-    border-right:2px solid #ededed;
-    padding-left:0px;
-  }
-  #vSubmit{
-      width:200px;
-      height: 40px;
-  }
-  #vClose{
-      height:40px;
-      width:150px;
-  }
-  .Visitors{
-      padding-top:25px;
-      padding-bottom: 25px;
-      height:675px;
-      background:url('bgVisitors.jpg');
-      background-repeat: no-repeat;
-      background-size: 100% 675px;
-      margin-bottom:100px;
-  }
-  #VisitorsInfoHeader{
-      font-size:20px;
-      margin-top:20px;
-  }
-  .breaker{
-      height:1px;
-      color:black;
-      width:80%;
-      background-color:black;
-  }
-  .vInfo{
-      margin:0px;
-      margin-top:-10px;
-      height:40px;
-      width:100%;
-      border:none;
-      border-bottom:1px solid gray;
-      padding-left:10px;
-  }
-  ::-webkit-scrollbar {
+    border-top: 2px solid #ededed;
+    border-bottom: 2px solid #ededed;
+    border-right: 2px solid #ededed;
+    padding-left: 0px;
+}
+
+#vSubmit {
+    width: 200px;
+    height: 40px;
+}
+
+#vClose {
+    height: 40px;
+    width: 150px;
+}
+
+.Visitors {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    height: 675px;
+    background: url('bgVisitors.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 675px;
+    margin-bottom: 100px;
+}
+
+#VisitorsInfoHeader {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.breaker {
+    height: 1px;
+    color: black;
+    width: 80%;
+    background-color: black;
+}
+
+.vInfo {
+    margin: 0px;
+    margin-top: -10px;
+    height: 40px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding-left: 10px;
+}
+
+ ::-webkit-scrollbar {
     width: 8px;
     height: 15px;
-    }
-    ::-webkit-scrollbar-track-piece  {
+}
+
+ ::-webkit-scrollbar-track-piece {
     background-color: #f5f2f2;
-    }
-    ::-webkit-scrollbar-thumb:vertical {
+}
+
+ ::-webkit-scrollbar-thumb:vertical {
     height: 30px;
     background-color: #c4c4c4;
-    }
-#logout{
-    width:100px;
-    height:35px;
-    font-weight:bold;
-    border-radius:20px;
-    padding:0px;
-    margin-top:7px;
 }
-#statistics, #home{
-    height:40px;
-    color:white;
-    width:200px;
-    border:none;
+
+#logout {
+    width: 100px;
+    height: 35px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 0px;
+    margin-top: 7px;
+}
+
+#statistics,
+#home {
+    height: 40px;
+    color: white;
+    width: 200px;
+    border: none;
     font-size: 23px;
-    padding:0px;
-    margin-top:5px;
+    padding: 0px;
+    margin-top: 5px;
 }
-.alert{
-    margin-top:-40px;
+
+.alert {
+    margin-top: -40px;
     display: none;
-    margin-bottom:0px;
+    margin-bottom: 0px;
     height: 40px;
     font-size: 12px;
 }
-#vSearchbar{
-    height:50px;
-    background:#0073bf;
-    padding:0px;
-    margin:0px;
+
+#vSearchbar {
+    height: 50px;
+    background: #0073bf;
+    padding: 0px;
+    margin: 0px;
 }
-#vSearch{
-    width:300px;
-    border-radius:30px;
-    outline:none;
-    margin:0px;
-    margin-top:5px;
+
+#vSearch {
+    width: 300px;
+    border-radius: 30px;
+    outline: none;
+    margin: 0px;
+    margin-top: 5px;
 }
-#vSearchIcon{
-    margin-top:6px;
-    font-size:35px;
-    color:white;
-    margin-left:10px;
-    margin-right:5px;
-    padding:0px;
-    margin-bottom:0px;
+
+#vSearchIcon {
+    margin-top: 6px;
+    font-size: 35px;
+    color: white;
+    margin-left: 10px;
+    margin-right: 5px;
+    padding: 0px;
+    margin-bottom: 0px;
 }
-#vSearchIcon:hover{
+
+#vSearchIcon:hover {
     cursor: pointer;
     text-shadow: 0px 0px 10px#22ADD4;
 }
-#vList{
-    height:300px;
+
+#vList {
+    height: 300px;
     max-height: 300px;
     /* background:#f0f0f0; */
-    padding:0px;
+    padding: 0px;
 }
-#vListDelete{
-    padding-top:10px;
-    padding-left:13px;
-    padding-right:13px;
-    padding-bottom:10px;
-    margin:0px;
-    border:2px solid white;
-    border-radius:50%;
+
+#vListDelete {
+    padding-top: 10px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-bottom: 10px;
+    margin: 0px;
+    border: 2px solid white;
+    border-radius: 50%;
 }
-#vListDelete:hover{
-    background:white;
-    border-radius:50%;
+
+#vListDelete:hover {
+    background: white;
+    border-radius: 50%;
     box-shadow: 0px 0px 5px black;
     cursor: pointer;
 }
-#vTableList{
-    font-size:12px;
-    margin:0px;
+
+#vTableList {
+    font-size: 12px;
+    margin: 0px;
 }
-#vListEdit{
-    padding-top:10px;
-    padding-left:13px;
-    padding-right:13px;
-    padding-bottom:10px;
-    margin:0px;
-    margin-right:10px;
-    border:2px solid white;
-    border-radius:50%;
+
+#vListEdit {
+    padding-top: 10px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-bottom: 10px;
+    margin: 0px;
+    margin-right: 10px;
+    border: 2px solid white;
+    border-radius: 50%;
 }
-#vListEdit:hover{
-    background:white;
-    border-radius:50%;
+
+#vListEdit:hover {
+    background: white;
+    border-radius: 50%;
     box-shadow: 0px 0px 5px black;
     cursor: pointer;
 }
-.vListInfoUpdate{
-    border:none;
+
+.vListInfoUpdate {
+    border: none;
     border-bottom: 1px solid grey;
-    width:400px;
-    outline:none;
-    background:none;
+    width: 400px;
+    outline: none;
+    background: none;
 }
-.vListSubmitCancelx{
-    padding-top:13px;
-    padding-left:13px;
-    padding-right:13px;
-    padding-bottom:13px;
-    border:2px solid white;
-    border-radius:50%;
-    margin:5px;
+
+.vListSubmitCancelx {
+    padding-top: 13px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-bottom: 13px;
+    border: 2px solid white;
+    border-radius: 50%;
+    margin: 5px;
 }
-.vListSubmitc{
-    padding-top:13px;
-    padding-left:13px;
-    padding-right:13px;
-    padding-bottom:13px;
-    border:2px solid white;
-    border-radius:50%;
-    margin:5px;
+
+.vListSubmitc {
+    padding-top: 13px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-bottom: 13px;
+    border: 2px solid white;
+    border-radius: 50%;
+    margin: 5px;
 }
-.vListSubmitCancelx:hover{
-    background:white;
+
+.vListSubmitCancelx:hover {
+    background: white;
     box-shadow: 0px 0px 5px black;
     cursor: pointer;
 }
-.vListSubmitc:hover{
-    background:white;
+
+.vListSubmitc:hover {
+    background: white;
     box-shadow: 0px 0px 5px black;
     cursor: pointer;
 }

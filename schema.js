@@ -8,7 +8,7 @@ var visitorOfStudent = new Schema({
     age: { type: Number, unique: false },
     gender: { type: String, unique: false },
     address: { type: String, unique: false },
-    date: { type: String}
+    date: { type: String }
 })
 
 var visit = new Schema({
@@ -21,8 +21,8 @@ var visit = new Schema({
     address: String,
     visitors: [visitorOfStudent]
 }, {
-        collection: 'visitors'
-    }
-);
+    collection: 'visitors'
+});
+
 const Visitors = mongoose.model("Visitors", visit);
 module.exports = { Visitors }

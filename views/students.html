@@ -38,10 +38,9 @@
             <div class="card-body">
                 <div class="col-md-12">
                     <div class="row">
-                        <table id="vRVisitors" class="table table-hover">
+                        <table id="students" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Student Name</th>
                                     <th scope="col">Last Name</th>
                                     <th scope="col">First Name</th>
                                     <th scope="col">Age</th>
@@ -61,7 +60,7 @@
     </div>
     <br>
     <br>
-    <div class="modal fade center hide" id="updateModal" data-backdrop="static" data-keyboard="false">
+    <div class="modal fade center hide" id="studentupdateModal" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -69,32 +68,32 @@
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12">
-                        <p id="VisitorsInfoHeader">Visitor's Information</p>
+                        <p id="VisitorsInfoHeader">Student's Information</p>
                     </div>
                     <hr>
                     <div class=col-md-12>
                         <p>Firstname:</p>
                     </div>
                     <div class="col-md-12">
-                        <input id="updateFirstName" class="vInfo" type="text" placeholder="First Name">
+                        <input id="studentupdateFirstName" class="vInfo" type="text" placeholder="First Name">
                     </div>
                     <div class=col-md-12>
                         <p>Lastname:</p>
                     </div>
                     <div class="col-md-12">
-                        <input id="updateLastName" class="vInfo" type="text" placeholder="Last Name">
+                        <input id="studentupdateLastName" class="vInfo" type="text" placeholder="Last Name">
                     </div>
                     <div class=col-md-12>
                         <p>Age:</p>
                     </div>
                     <div class="col-md-12">
-                        <input id="updateAge" class="vInfo" type="Number" placeholder="Age">
+                        <input id="studentupdateAge" class="vInfo" type="Number" placeholder="Age">
                     </div>
                     <div class="col-md-12">
                         <p for="sex">Gender:</p>
                     </div>
                     <div class="col-md-12">
-                        <select class="vInfo" id="updateSex">
+                        <select class="vInfo" id="studentupdateSex">
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
@@ -103,18 +102,18 @@
                         <p>Address:</p>
                     </div>
                     <div class="col-md-12">
-                        <input id="updateAddress" class="vInfo" type="text" placeholder="Address">
+                        <input id="studentupdateAddress" class="vInfo" type="text" placeholder="Address">
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button id="updateSave" type="button" class="btn btn-outline-success">save</button>
-                    <button id="updateClose" type="button" class="btn btn-outline-danger" data-dismiss="modal">close</button>
+                    <button id="studentupdateSave" type="button" class="btn btn-outline-success">save</button>
+                    <button id="studentupdateClose" type="button" class="btn btn-outline-danger" data-dismiss="modal">close</button>
                 </div>
             </div>
         </div>
     </div>
-    <script src="visitors.js"></script>
+    <script src="students.js"></script>
 </body>
 
 </html>
