@@ -399,4 +399,6 @@ $(document).ready(function() {
         apiRequest(url, data, method).then(response => window.location.href = "./students.html")
     })
 
+
+
 });

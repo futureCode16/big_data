@@ -46,7 +46,7 @@ $(document).ready(function() {
     });
 
     $("#home").click(function() {
-        window.location.href = "./home.html";
+        window.location.href = "index.html";
     })
 
     $(document).on('click', '#tableUpdate', function() {
