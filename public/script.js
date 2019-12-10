@@ -203,6 +203,83 @@ $(document).ready(function () {
                 })
             });
         }
+        var lineChart;
+        var ctx = $("#myChart")[0].getContext("2d");
+        let name = $('#name').val().split(",")
+        console.log(name[1])
+        $.ajax({
+            type: "get",
+            url: `http://localhost:8080/chart/perStudent/
+        ${name[1]}/${name[0]}`,
+            // dataType: "jsonp",
+            //   contentType: "application/json; charset=UTF-8",
+            crossDomain: true,
+            success: function (data) {
+                let date = [];
+                let total = [];
+                if (data.date.length == 0) {
+                    date = ["No data"];
+                    total = [0];
+                } else {
+                    if (data.date.length == 1) {
+                        date = ["", data.date]
+                        total = [data.total, data.total];
+                    } else {
+                        date = data.date;
+                        total = data.total;
+                    }
+                }
+
+                //VISITORS OF A CERTAIN STUDENT PER YEAR
+                //FOR LINE CHART
+                var gradientStroke = ctx.createLinearGradient(1200, 0, 100, 0);
+                gradientStroke.addColorStop(0, "#ff5757");
+                gradientStroke.addColorStop(1, "#578cff");
+
+                if (lineChart) lineChart.destroy();
+
+                lineChart = new Chart(ctx, {
+                    type: "line",
+                    data: {
+                        labels: date,
+                        datasets: [
+                            {
+                                label: `${name[1]} ${name[0]}`,
+                                borderColor: gradientStroke,
+                                pointRadius: 0,
+                                fill: true,
+
+                                backgroundColor: gradientStroke,
+                                borderWidth: 1,
+                                data: total //I CAN PUT HERE THE N VISITORS OF A CERTAIN STUDENT EVERY YEAR AS ELEMENT
+                            }
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    callback: function (value) { if (value % 1 === 0) { return value; } }
+                                }
+                            }]
+                        },
+                        responsive: true,
+                        legend: {
+                            position: "bottom"
+                        },
+                        layout: {
+                            padding: {
+                                left: 40,
+                                right: 100,
+                                top: 20
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
     });
 
     //clear the input fields upon closing the modal
