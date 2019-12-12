@@ -32,26 +32,26 @@ $(document).ready(function () {
 
     var account = ""
 
+    $("#updateHeader").hide();
+    $("#deleteHeader").hide();
+    $(".hideME2").hide()
+    $(".hideME2").hide()
+
+    apiRequestLogin("http://localhost:8080/getAccess", "GET").then(res => {
+        account = res
+        if (account === "admin") {
+            $("#updateHeader").show();
+            $("#deleteHeader").show();
+            $(".hideME2").show()
+            $(".hideME2").show()
+        } else {
             $("#updateHeader").hide();
             $("#deleteHeader").hide();
             $(".hideME2").hide()
             $(".hideME2").hide()
-
-            apiRequestLogin("http://localhost:8080/getAccess", "GET").then(res => {
-                account = res
-                if (account === "admin") {
-                    $("#updateHeader").show();
-                    $("#deleteHeader").show();
-                    $(".hideME2").show()
-                    $(".hideME2").show()
-                } else {
-                    $("#updateHeader").hide();
-                    $("#deleteHeader").hide();
-                    $(".hideME2").hide()
-                    $(".hideME2").hide()
-                }
-                console.log(account)
-            })
+        }
+        console.log(account)
+    })
 
     function apiRequestLogin(apiurl, method, data) {
         return new Promise((resolve, reject) => {
@@ -147,5 +147,9 @@ $(document).ready(function () {
 
         })
     });
+
+    $("#home").click(function() {
+        window.location.href='index.html'
+    })
 
 })
