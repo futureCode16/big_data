@@ -1,4 +1,5 @@
-$(document).ready(function() {
+$(document).ready(function () {
+
     let method = "GET";
     let url = 'http://localhost:8080/retrieve-all';
     let data = "";
@@ -6,8 +7,8 @@ $(document).ready(function() {
         $("#table").show();
         $("#table").fadeIn();
         var body = res.data.body;
-        var update = '<button id="tableUpdate" type="button" class="btn btn-outline-primary">update</button>';
-        var Delete = '<button id="tabledelete"type="button" class="btn btn-outline-danger">delete</button>';
+        var update = '<button id="tableUpdate" type="button" class="btn hideME btn-outline-primary">update</button>';
+        var Delete = '<button id="tabledelete"type="button" class="btn hideME btn-outline-danger">delete</button>';
         if ($("table tbody tr").length >= 1) {
             for (var i = 0; i < $("table tbody tr").length; ++i) {
                 $("table tbody tr").remove();
@@ -33,7 +34,45 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on('click', '#tabledelete', function() {
+    var account = ""
+
+            $("#updateHeader").hide();
+            $("#deleteHeader").hide();
+            $(".hideME").hide()
+            $(".hideME").hide()
+
+            apiRequestLogin("http://localhost:8080/getAccess", "GET").then(res => {
+                account = res
+                if (account === "admin") {
+                    $("#updateHeader").show();
+                    $("#deleteHeader").show();
+                    $(".hideME").show()
+                    $(".hideME").show()
+                } else {
+                    $("#updateHeader").hide();
+                    $("#deleteHeader").hide();
+                    $(".hideME").hide()
+                    $(".hideME").hide()
+                }
+                console.log(account)
+            })
+
+    function apiRequestLogin(apiurl, method, data) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: apiurl,
+                type: method,
+                data: data,
+                success: function (result) {
+                    resolve(result)
+                }, error: function (error) {
+                    reject(error)
+                }
+            });
+        })
+    }
+
+    $(document).on('click', '#tabledelete', function () {
 
         var a = $(this).closest('tr').attr('id');
         var b = $(this).closest('tr').attr('class');
@@ -45,11 +84,11 @@ $(document).ready(function() {
         })
     });
 
-    $("#home").click(function() {
+    $("#home").click(function () {
         window.location.href = "index.html";
     })
 
-    $(document).on('click', '#tableUpdate', function() {
+    $(document).on('click', '#tableUpdate', function () {
         var row = $(this).closest('tr').children()
 
         $('#updateFirstName').val(row.eq(1).text());
@@ -62,7 +101,7 @@ $(document).ready(function() {
         var b = $(this).closest('tr').attr('class');
         $('#updateModal').modal('show');
 
-        $('#updateSave').click(function() {
+        $('#updateSave').click(function () {
             var updatedFirstName = $('#updateFirstName').val();
             var updatedLastName = $('#updateLastName').val();
             var updatedAge = $('#updateAge').val();
@@ -90,10 +129,10 @@ $(document).ready(function() {
                 url: apiurl,
                 data: apidata,
                 type: method,
-                success: function(result) {
+                success: function (result) {
                     resolve(result)
                 },
-                error: function(error) {
+                error: function (error) {
                     reject(error)
                 }
             });

@@ -19,6 +19,8 @@ var piechart = require("./chart_modules/piechart");
 var linechart = require("./chart_modules/linechart");
 require("./db");
 
+var account =""
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -26,11 +28,20 @@ app.use(express.static("views"));
 
 app.get("/dashboard", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
-
 });
 
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "/views/login.html"));
+});
+
+app.post("/getAccess", function (req, res) {
+    account = req.body.access
+    console.log(req.body.access)
+    res.send(account)
+});
+
+app.get("/getAccess", function (req, res) {
+    res.send(account)
 });
 
 app.all("/index.html", function (req, res) {

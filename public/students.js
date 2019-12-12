@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     let method = "GET";
     let url = 'http://localhost:8080/retrieve-all-student';
     let data = "";
@@ -7,8 +8,8 @@ $(document).ready(function () {
         $("#table").show();
         $("#table").fadeIn();
         var body = res.data.body;
-        var update = '<button id="studentUpdate" type="button" class="btn btn-outline-primary">update</button>';
-        var Delete = '<button id="studentDelete"type="button" class="btn btn-outline-danger">delete</button>';
+        var update = '<button id="studentUpdate" type="button" class="btn hideME btn-outline-primary">update</button>';
+        var Delete = '<button id="studentDelete"type="button" class="btn hideME btn-outline-danger">delete</button>';
         $("table tbody tr").empty();
 
         for (var i = 0; i < body.length; ++i) {
@@ -29,40 +30,42 @@ $(document).ready(function () {
     });
     
 
-    //$("#table").DataTable();
+    var account = ""
 
-    function sortTable() {
-        var table, i, x, y;
-        table = $('#table');
-        var switching = true;
+            $("#updateHeader").hide();
+            $("#deleteHeader").hide();
+            $(".hideME").hide()
+            $(".hideME").hide()
 
-        // Run loop until no switching is needed 
-        while (switching) {
-            switching = false;
-            var rows = table.rows;
-
-            // Loop to go through all rows 
-            for (i = 1; i < (rows.length - 1); i++) {
-                var Switch = false;
-
-                // Fetch 2 elements that need to be compared 
-                x = rows[i].getElementsByTagName("TD")[0];
-                y = rows[i + 1].getElementsByTagName("TD")[0];
-
-                // Check if 2 rows need to be switched 
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-
-                    // If yes, mark Switch as needed and break loop 
-                    Switch = true;
-                    break;
+            apiRequestLogin("http://localhost:8080/getAccess", "GET").then(res => {
+                account = res
+                if (account === "admin") {
+                    $("#updateHeader").show();
+                    $("#deleteHeader").show();
+                    $(".hideME").show()
+                    $(".hideME").show()
+                } else {
+                    $("#updateHeader").hide();
+                    $("#deleteHeader").hide();
+                    $(".hideME").hide()
+                    $(".hideME").hide()
                 }
-            }
-            if (Switch) {
-                // Function to switch rows and mark switch as completed 
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-            }
-        }
+                console.log(account)
+            })
+
+    function apiRequestLogin(apiurl, method, data) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: apiurl,
+                type: method,
+                data: data,
+                success: function (result) {
+                    resolve(result)
+                }, error: function (error) {
+                    reject(error)
+                }
+            });
+        })
     }
 
     function apiRequest(apiurl, apidata, method) {
