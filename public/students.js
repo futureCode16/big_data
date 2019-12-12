@@ -1,12 +1,12 @@
-$(document).ready(function() {
+$(document).ready(function () {
     let method = "GET";
     let url = 'http://localhost:8080/retrieve-all-student';
     let data = "";
     apiRequest(url, data, method).then(res => {
+        console.log(res)
         $("#table").show();
         $("#table").fadeIn();
         var body = res.data.body;
-        console.log(body)
         var update = '<button id="studentUpdate" type="button" class="btn btn-outline-primary">update</button>';
         var Delete = '<button id="studentDelete"type="button" class="btn btn-outline-danger">delete</button>';
         $("table tbody tr").empty();
@@ -21,11 +21,49 @@ $(document).ready(function() {
                     '<td>' + body[i].address + '</td>' +
                     '<td>' + update + '</td>' +
                     '<td>' + Delete + '</td>' +
+                    '<td>' + body[i].visitors.length + '</td>' +
                     '</tr>';
                 $('#students').css({ 'font-size': '12px' }).append(data);
             }
         }
     });
+    
+
+    //$("#table").DataTable();
+
+    function sortTable() {
+        var table, i, x, y;
+        table = $('#table');
+        var switching = true;
+
+        // Run loop until no switching is needed 
+        while (switching) {
+            switching = false;
+            var rows = table.rows;
+
+            // Loop to go through all rows 
+            for (i = 1; i < (rows.length - 1); i++) {
+                var Switch = false;
+
+                // Fetch 2 elements that need to be compared 
+                x = rows[i].getElementsByTagName("TD")[0];
+                y = rows[i + 1].getElementsByTagName("TD")[0];
+
+                // Check if 2 rows need to be switched 
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+
+                    // If yes, mark Switch as needed and break loop 
+                    Switch = true;
+                    break;
+                }
+            }
+            if (Switch) {
+                // Function to switch rows and mark switch as completed 
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+            }
+        }
+    }
 
     function apiRequest(apiurl, apidata, method) {
         return new Promise((resolve, reject) => {
@@ -33,17 +71,17 @@ $(document).ready(function() {
                 url: apiurl,
                 data: apidata,
                 type: method,
-                success: function(result) {
+                success: function (result) {
                     resolve(result)
                 },
-                error: function(error) {
+                error: function (error) {
                     reject(error)
                 }
             });
         })
     }
 
-    $(document).on('click', '#studentDelete', function() {
+    $(document).on('click', '#studentDelete', function () {
         console.log($(this).closest('tr').attr('id'))
         var a = $(this).closest('tr').attr('id');
         var b = $(this).closest('tr').attr('class');
@@ -57,8 +95,8 @@ $(document).ready(function() {
         })
     });
 
-    $(document).on('click', '#studentUpdate', function() {
-        
+    $(document).on('click', '#studentUpdate', function () {
+
         var row = $(this).closest('tr').children()
 
         $('#studentupdateFirstName').val(row.eq(0).text());
@@ -71,7 +109,7 @@ $(document).ready(function() {
         var b = $(this).closest('tr').attr('class');
         $('#studentupdateModal').modal('show');
 
-        $('#studentupdateSave').click(function() {
+        $('#studentupdateSave').click(function () {
             var updatedFirstName = $('#studentupdateFirstName').val();
             var updatedLastName = $('#studentupdateLastName').val();
             var updatedAge = $('#studentupdateAge').val();
@@ -94,7 +132,7 @@ $(document).ready(function() {
 
     })
 
-    $(document).on('click', '#studentDelete', function() {
+    $(document).on('click', '#studentDelete', function () {
 
         var a = $(this).closest('tr').attr('id');
         var b = $(this).closest('tr').attr('class');

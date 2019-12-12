@@ -7,7 +7,7 @@ module.exports = function(req, res) {
         response.status = 200;
         response.data.body = students;
         res.send(response)
-    }).catch(err => {
+    }).sort({"name.lastname":1}).catch(err => {
         if (err) {
             console.log(err);
             res.status(503).json({
