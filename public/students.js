@@ -8,8 +8,8 @@ $(document).ready(function () {
         $("#table").show();
         $("#table").fadeIn();
         var body = res.data.body;
-        var update = '<button id="studentUpdate" type="button" class="btn hideME btn-outline-primary">update</button>';
-        var Delete = '<button id="studentDelete"type="button" class="btn hideME btn-outline-danger">delete</button>';
+        var update = '<button id="studentUpdate" type="button" class="btn hideME2 btn-outline-primary">update</button>';
+        var Delete = '<button id="studentDelete"type="button" class="btn hideME2 btn-outline-danger">delete</button>';
         $("table tbody tr").empty();
 
         for (var i = 0; i < body.length; ++i) {
@@ -34,21 +34,21 @@ $(document).ready(function () {
 
             $("#updateHeader").hide();
             $("#deleteHeader").hide();
-            $(".hideME").hide()
-            $(".hideME").hide()
+            $(".hideME2").hide()
+            $(".hideME2").hide()
 
             apiRequestLogin("http://localhost:8080/getAccess", "GET").then(res => {
                 account = res
                 if (account === "admin") {
                     $("#updateHeader").show();
                     $("#deleteHeader").show();
-                    $(".hideME").show()
-                    $(".hideME").show()
+                    $(".hideME2").show()
+                    $(".hideME2").show()
                 } else {
                     $("#updateHeader").hide();
                     $("#deleteHeader").hide();
-                    $(".hideME").hide()
-                    $(".hideME").hide()
+                    $(".hideME2").hide()
+                    $(".hideME2").hide()
                 }
                 console.log(account)
             })

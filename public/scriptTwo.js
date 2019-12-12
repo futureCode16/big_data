@@ -6,11 +6,11 @@ $(document).ready(function () {
       })
       apiRequestLogin("http://localhost:8080/getAccess","POST", {access: "admin"}).then(res =>{
       })
-    } else if ($("#username").val() == "user" && $("#password").val() == "user") {
+    } else if ($("#username").val() == "staff" && $("#password").val() == "staff") {
       apiRequest("http://localhost:8080/dashboard","GET").then(res =>{
         window.location.href = "./dashboard";
       })
-      apiRequestLogin("http://localhost:8080/getAccess","POST", {access: "user"}).then(res =>{
+      apiRequestLogin("http://localhost:8080/getAccess","POST", {access: "staff"}).then(res =>{
         
       })
     } else {
