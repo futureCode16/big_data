@@ -104,7 +104,7 @@ $("#chart2-btn").on("click", () => {
           total = data.total;
         }
       }
-      
+        
       //VISITORS OF A CERTAIN STUDENT PER YEAR
       //FOR LINE CHART
       var gradientStroke = ctx2.createLinearGradient(1200, 0, 100, 0);

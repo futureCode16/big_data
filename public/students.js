@@ -3,6 +3,11 @@ $(document).ready(function () {
     let method = "GET";
     let url = 'http://localhost:8080/retrieve-all-student';
     let data = "";
+    var account = "";
+    var token = localStorage.getItem('token');
+    // var decoded = jwt_decode(token);
+
+
     apiRequest(url, data, method).then(res => {
         console.log(res)
         $("#table").show();
@@ -22,36 +27,34 @@ $(document).ready(function () {
                     '<td>' + body[i].address + '</td>' +
                     '<td>' + update + '</td>' +
                     '<td>' + Delete + '</td>' +
-                    '<td>' + body[i].visitors.length + '</td>' +
+                    '<td id="total">' + body[i].visitors.length + '</td>' +
                     '</tr>';
                 $('#students').css({ 'font-size': '12px' }).append(data);
             }
         }
-    });
-    
+        // $("#updateHeader").hide();
+        // $("#deleteHeader").hide();
+        // $(".hideME2").hide()
+        // $(".hideME2").hide()
 
-    var account = ""
-
-    $("#updateHeader").hide();
-    $("#deleteHeader").hide();
-    $(".hideME2").hide()
-    $(".hideME2").hide()
-
-    apiRequestLogin("http://localhost:8080/getAccess", "GET").then(res => {
-        account = res
-        if (account === "admin") {
+        if (token === "admin") {
             $("#updateHeader").show();
             $("#deleteHeader").show();
             $(".hideME2").show()
             $(".hideME2").show()
         } else {
-            $("#updateHeader").hide();
-            $("#deleteHeader").hide();
-            $(".hideME2").hide()
-            $(".hideME2").hide()
+            console.log('testing')
+            // $("#updateHeader").hide();
+            // $("#deleteHeader").hide();
+            $(".hideME2").attr('disabled',true)
+            // $(".hideME2").hide()
         }
-        console.log(account)
-    })
+    });
+
+    // apiRequestLogin("http://localhost:8080/getAccess", "GET").then(res => {
+    //     account = res
+
+    // })
 
     function apiRequestLogin(apiurl, method, data) {
         return new Promise((resolve, reject) => {
@@ -148,8 +151,8 @@ $(document).ready(function () {
         })
     });
 
-    $("#home").click(function() {
-        window.location.href='index.html'
+    $("#home").click(function () {
+        window.location.href = 'index.html'
     })
 
 })
