@@ -25,8 +25,8 @@ $(document).ready(function () {
                         '<td>' + body[i].visitors[x].age + '</td>' +
                         '<td>' + body[i].visitors[x].gender + '</td>' +
                         '<td>' + body[i].visitors[x].address + '</td>' +
-                        '<td>' + update + '</td>' +
-                        '<td>' + Delete + '</td>' +
+                        // '<td>' + update + '</td>' +
+                        // '<td>' + Delete + '</td>' +
                         '</tr>';
                     $('#vRVisitors').css({ 'font-size': '12px' }).append(data);
                 }
